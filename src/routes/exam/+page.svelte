@@ -60,4 +60,8 @@
 	.error {
 		color: #ff4444;
 	}
+
+	.contact {
+		padding: var(--space-l) var(--space-m);
+	}
 </style>
