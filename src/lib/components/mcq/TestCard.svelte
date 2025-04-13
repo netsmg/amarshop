@@ -34,7 +34,7 @@
             >
                 <div class="option-left">
                     <span class="option-number">{getLetter(index)}.</span>
-                    <span class="option-text">{option.text}</span>
+                    <span class="option-text">{option}</span>
                 </div>
                 <div class="option-right">
                     <span class="option-tag">{option.tag || 'no tag'}</span>
