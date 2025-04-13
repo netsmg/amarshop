@@ -1,94 +1,175 @@
 <script>
-	import { borderAnimation } from '$lib/actions/animation';
-	import { SendDiagonal } from '$lib/icons';
+    import { borderAnimation } from '$lib/actions/animation';
+    import { SendDiagonal } from '$lib/icons';
+    import { auth } from '$lib/firebase';
+    import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+    import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
+
+    let email = '';
+    let password = '';
+    let errorMessage = '';
+    let successMessage = '';
+    let isLoading = false;
+    let isLogin = true;
+
+    const handleAuth = async () => {
+        if (!email || !password) {
+            errorMessage = 'Please fill in all fields';
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = '';
+        successMessage = '';
+
+        try {
+            if (isLogin) {
+                await signInWithEmailAndPassword(auth, email, password);
+                successMessage = 'Login successful! Redirecting...';
+            } else {
+                await createUserWithEmailAndPassword(auth, email, password);
+                successMessage = 'Registration successful! Redirecting...';
+            }
+
+            setTimeout(() => goto('/dashboard'), 2000);
+        } catch (error) {
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    errorMessage = 'Email already in use';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = 'Invalid email address';
+                    break;
+                case 'auth/weak-password':
+                    errorMessage = 'Password should be at least 6 characters';
+                    break;
+                case 'auth/user-not-found':
+                    errorMessage = 'User not found';
+                    break;
+                case 'auth/wrong-password':
+                    errorMessage = 'Incorrect password';
+                    break;
+                default:
+                    errorMessage = 'Something went wrong. Please try again';
+            }
+        } finally {
+            isLoading = false;
+        }
+    };
+
+    onMount(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) goto('/dashboard');
+        });
+        return () => unsubscribe();
+    });
 </script>
 
 <section>
-	<form class="contact">
-		<div class="contact__row">
-			<label for="name">Username</label>
-			<input type="text" id="user-name" name="user-name" placeholder="John Doe" />
-			<label for="email">Email</label>
-			<input required type="email" id="email" name="email" placeholder="johndoe@company.com" />
-			<label for="phone">Password</label>
-			<input type="password" id="password" name="password" placeholder="Enter credentials.." />
-			
-		</div>
+    <form class="contact" on:submit|preventDefault={handleAuth}>
+        <div class="contact__row">
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                bind:value={email}
+                placeholder="johndoe@company.com"
+                required
+            />
 
-		<button class="contact__btn btn">
-			<SendDiagonal />
-			<p>Login/Register</p>
-		</button>
-	</form>
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                bind:value={password}
+                placeholder="Enter password..."
+                required
+            />
+        </div>
+
+        {#if errorMessage}
+            <div class="error-message">
+                {errorMessage}
+            </div>
+        {/if}
+
+        {#if successMessage}
+            <div class="success-message">
+                {successMessage}
+            </div>
+        {/if}
+
+        <button class="contact__btn btn" type="submit" disabled={isLoading}>
+            {#if isLoading}
+                <span class="loading-spinner" />
+            {:else}
+                <SendDiagonal />
+            {/if}
+            <p>{isLogin ? 'Login' : 'Register'}</p>
+        </button>
+
+        <div class="toggle-auth">
+            <button type="button" on:click={() => isLogin = !isLogin}>
+                {isLogin 
+                    ? 'Need an account? Register here'
+                    : 'Already have an account? Login here'}
+            </button>
+        </div>
+    </form>
 </section>
 
 <style>
-	.contact {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-	}
+ .contact{
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--space-l);
+    }
+    .error-message {
+        color: var(--error-500);
+        padding: var(--space-s);
+        border: var(--brand-border);
+        border-color: var(--error-500);
+        margin-top: var(--space-m);
+    }
 
-	.contact .contact__row:first-child {
-		border-top: var(--brand-border);
-	}
+    .success-message {
+        color: var(--success-500);
+        padding: var(--space-s);
+        border: var(--brand-border);
+        border-color: var(--success-500);
+        margin-top: var(--space-m);
+    }
 
-	.contact__row {
-		display: grid;
-		grid-template-columns: 1fr;
-	}
+    .loading-spinner {
+        width: 24px;
+        height: 24px;
+        border: 3px solid var(--background-300);
+        border-top: 3px solid var(--primary-500);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
 
-	@media (min-width: 992px) {
-		.contact__row {
-			grid-template-columns: 200px 1fr;
-		}
-	}
+    .toggle-auth {
+        margin-top: var(--space-m);
+        text-align: center;
+        
+        button {
+            background: none;
+            border: none;
+            color: var(--primary-500);
+            text-decoration: underline;
+            cursor: pointer;
+            font-family: var(--font-normal);
+            
+            &:hover {
+                color: var(--primary-400);
+            }
+        }
+    }
 
-	.contact__row label {
-		padding: var(--space-s);
-		border-bottom: var(--brand-border);
-		border-left: var(--brand-border);
-		border-right: var(--brand-border);
-		font-family: var(--font-fancy);
-		font-size: var(--step-1);
-	}
-
-	@media (min-width: 992px) {
-		.contact__row label {
-			border-right: 0;
-		}
-	}
-
-	.contact__row input,
-	.contact__row textarea {
-		padding: var(--space-s);
-		border-bottom: var(--brand-border);
-		border-right: var(--brand-border);
-		border-left: var(--brand-border);
-		background-color: var(--background-100);
-	}
-
-	input,
-	textarea {
-		flex: 1;
-		border: none;
-		outline: none;
-	}
-	textarea {
-		resize: vertical;
-		min-height: 200px;
-	}
-
-	input:focus,
-	textarea:focus {
-		background-color: var(--background-200);
-	}
-
-	.contact__btn {
-		text-align: left;
-		justify-content: flex-start;
-		background-color: var(--primary-500);
-		color: var(--black);
-		margin-top: var(--space-l);
-	}
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
