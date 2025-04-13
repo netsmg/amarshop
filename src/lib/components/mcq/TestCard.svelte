@@ -189,8 +189,7 @@
         }
 
         .explanation {
-         background: var(--primary-100);
-        color: var(--primary-500);
+         color: var(--primary-500);
         font-size: var(--step--1);
         margin-top: var(--space-xs);
         }
