@@ -24,7 +24,7 @@
 <article class="mcq-card" use:borderAnimation>
     <div class="mcq__header">
         <div class="question-meta">
-            <span class="question-number">Question {questionNumber}</span>
+            <span class="question-number">Question:  {questionNumber}</span>
             {#if questionTag}
                 <span class="question-tag">{questionTag}</span>
             {/if}
