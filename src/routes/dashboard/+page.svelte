@@ -1,6 +1,6 @@
 <script>
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import AuthForm from '$lib/sections/AuthForm.svelte';
+	import McqForm from '$lib/sections/McqForm.svelte';
 </script>
 
 <svelte:head>
@@ -12,9 +12,9 @@
 
 <section class="contact">
 	<div class="contact__title">
-		<p>Create an account or login to your existing account.</p>
+		<p>Start practicing mcq.</p>
 	</div>
-	<AuthForm />
+	<McqForm />
 </section>
 
 <style>
