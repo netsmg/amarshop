@@ -1,0 +1,33 @@
+@import url(reset.css);
+@import url(typography.css);
+@import url(spacing.css);
+@import url(color.css);
+@import url(utils.css);
+@import url(components.css);
+
+body {
+	font-family: var(--font-normal);
+	font-size: var(--step-0);
+	background-color: var(--background-50);
+	color: var(--text-950);
+
+	overflow-y: auto;
+	scrollbar-gutter: stable !important;
+}
+
+:root {
+	accent-color: var(--primary-500);
+	--black: hsl(341, 37%, 10%);
+	--white: hsl(341, 37%, 90%);
+	--border-radius-1: 4px;
+	--border-radius-2: 8px;
+	--border-radius-3: 12px;
+
+	--brand-border: 2px solid var(--background-900);
+	--transition-bounce: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+	--scrollbar-width: calc(100vw - 100%);
+}
+
+.numeric {
+	font-variant-numeric: tabular-nums;
+}
