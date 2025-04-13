@@ -84,7 +84,6 @@
     </div>
   </main>
 </div>
-
 <style global lang="postcss">
   :root {
     --color-primary: #3b82f6;
@@ -103,12 +102,12 @@
 
   .header {
     margin-bottom: 2rem;
+  }
 
-    progress {
-      width: 100%;
-      height: 0.5rem;
-      border-radius: 0.25rem;
-    }
+  .header progress {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
   }
 
   .question-container {
@@ -128,21 +127,35 @@
     display: grid;
     gap: 1rem;
     margin-bottom: 2rem;
+  }
 
-    @media (min-width: 640px) {
+  @media (min-width: 640px) {
+    .options-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .option-button {
-    @mixin button secondary;
-    text-align: left;
-    justify-content: flex-start;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border: none;
+    border-radius: 0.5rem;
     padding: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: background-color 0.3s;
+  }
 
-    &.selected {
-      @mixin button primary;
-    }
+  .option-button:hover {
+    background-color: var(--color-secondary-dark);
+  }
+
+  .option-button.selected {
+    background-color: var(--color-primary);
+    color: white;
   }
 
   .navigation {
@@ -152,11 +165,29 @@
   }
 
   .nav-button {
-    @mixin button primary;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button:hover {
+    background-color: var(--color-primary-dark);
   }
 
   .timer {
-    @mixin button secondary;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
     margin-bottom: 1rem;
+    text-align: center;
   }
 </style>
+
