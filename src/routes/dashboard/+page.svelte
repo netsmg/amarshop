@@ -83,104 +83,20 @@
     </div>
   </main>
 </div>
+
+
 <style global lang="postcss">
   
-
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    min-height: 100vh;
-  }
-
-  .header {
-    margin-bottom: 2rem;
-  }
-
-  .header progress {
-    width: 100%;
-    height: 0.5rem;
-    border-radius: 0.25rem;
-  }
-
-  .question-container {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  }
-
-  .question-text {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--color-text);
-  }
-
-  .options-grid {
-    display: grid;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  @media (min-width: 640px) {
-    .options-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
+  /* Rest of your styles */
   .option-button {
-    background-color: var(--color-secondary);
-    color: var(--color-text);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    cursor: pointer;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
+    @mixin button secondary;
+    text-align: left;
     justify-content: flex-start;
-    transition: background-color 0.3s;
-  }
+    padding: 1rem;
 
-  .option-button:hover {
-    background-color: var(--color-secondary-dark);
-  }
-
-  .option-button.selected {
-    background-color: var(--color-primary);
-    color: white;
-  }
-
-  .navigation {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-  }
-
-  .nav-button {
-    background-color: var(--color-primary);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .nav-button:hover {
-    background-color: var(--color-primary-dark);
-  }
-
-  .timer {
-    background-color: var(--color-secondary);
-    color: var(--color-text);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    text-align: center;
+    &.selected {
+      @mixin button primary;
+    }
   }
 </style>
 
