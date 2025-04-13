@@ -8,21 +8,6 @@
 	let loading = true;
 	let error = null;
 	let questions = [];
-	let selectedTag = 'All'; // Default selection
-	let uniqueTags = [];
-
-	// Reactive statement to get unique tags
-	$: {
-		if (questions.length) {
-			const tags = questions.map(q => q.questionTag);
-			uniqueTags = ['All', ...new Set(tags)].sort();
-		}
-	}
-
-	// Filter questions based on selected tag
-	$: filteredQuestions = selectedTag === 'All' 
-		? questions 
-		: questions.filter(q => q.questionTag === selectedTag);
 
 	onMount(async () => {
 		try {
@@ -41,7 +26,7 @@
 </script>
 
 <svelte:head>
-	<title>Exam | Amar Shop</title>
+	<title>Test | Amar Shop</title>
 	<meta name="description" content="Give mcq" />
 </svelte:head>
 
@@ -52,23 +37,8 @@
 {:else if error}
 	<div class="error">Error: {error}</div>
 {:else}
-	<div class="controls">
-		<div class="tag-filter">
-			<label>Filter by Category:</label>
-			<select bind:value={selectedTag}>
-				{#each uniqueTags as tag}
-					<option value={tag}>{tag}</option>
-				{/each}
-			</select>
-		</div>
-		
-		<div class="question-count">
-			Showing {filteredQuestions.length} questions
-		</div>
-	</div>
-
-	<section class="questions-container">
-		{#each filteredQuestions as question (question.id)}
+	<section class="contact">
+		{#each questions as question (question.id)}
 			<McqCard
 				question={question.question}
 				questionNumber={question.questionNumber}
@@ -82,47 +52,16 @@
 {/if}
 
 <style>
-	.controls {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 2rem;
-		padding: 0 1rem;
+	.loading, .error {
+		text-align: center;
+		padding: 2rem;
+		font-size: 1.2rem;
+	}
+	.error {
+		color: #ff4444;
 	}
 
-	.tag-filter {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
+	.contact {
+		padding: var(--space-l) var(--space-m);
 	}
-
-	.tag-filter select {
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		border: 1px solid #ddd;
-		min-width: 200px;
-	}
-
-	.question-count {
-		color: #666;
-		font-size: 0.9rem;
-	}
-
-	.questions-container {
-		display: grid;
-		gap: 1.5rem; 
-padding: var(--space-l) var(--space-m);
-	
-	}
-
-	@media (max-width: 768px) {
-		.controls {
-			flex-direction: column;
-			gap: 1rem;
-			align-items: stretch;
-		}
-	} 
-
-		
-
 </style>
