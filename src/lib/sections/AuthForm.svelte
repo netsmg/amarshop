@@ -118,13 +118,7 @@
 </section>
 
 <style>
-    .auth-container {
-        display: grid;
-        place-items: center;
-        min-height: 100vh;
-        padding: 2rem;
-        
-    }
+    
 
     .auth-card {
         width: 100%;
