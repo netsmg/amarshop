@@ -93,5 +93,8 @@
         gap: 2rem;
         margin-top: 1rem;
         color: #666;
-    }
+    } 
+.contact {
+		padding: var(--space-l) var(--space-m);
+	}
 </style>
