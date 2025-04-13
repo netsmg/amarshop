@@ -59,7 +59,7 @@
                 <input
                     type="email"
                     bind:value={email}
-                    placeholder="Enter email id.. "
+                    placeholder=" "
                     
                     class="modern-input"
                 />
@@ -71,7 +71,7 @@
                 <input
                     type="password"
                     bind:value={password}
-                    placeholder="Enter password.. "
+                    placeholder=" "
 
                     class="modern-input"
                 />
@@ -119,8 +119,7 @@
 
 <style>
     
-
-    .auth-card {
+ .auth-card {
         width: 100%;
         max-width: 420px;
         padding: 2.5rem;
@@ -155,13 +154,13 @@
         border: none;
         border-radius: 0;
         background-color: transparent;
-        border-bottom: 1px solid var(--text-200);
+        border-bottom: 1px solid var(--primary-100);
         transition: all 0.3s var(--transition);
     }
 
     .modern-input:focus {
         outline: none;
-        border-color: var(--primary-500);
+        border-color: var(--brand-border);
     }
 
     .modern-input:focus + label,
