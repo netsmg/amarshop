@@ -59,8 +59,8 @@
                 <input
                     type="email"
                     bind:value={email}
-                    placeholder=" "
-                    required
+                    placeholder="Enter email id.. "
+                    
                     class="modern-input"
                 />
                 <label>Email Address</label>
@@ -71,8 +71,8 @@
                 <input
                     type="password"
                     bind:value={password}
-                    placeholder=" "
-                    required
+                    placeholder="Enter password.. "
+
                     class="modern-input"
                 />
                 <label>Password</label>
