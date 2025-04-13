@@ -12,7 +12,9 @@
 
 <section class="contact">
 	<McqCard
-    question="Which language runs in a web browser?"
+    question="Which language runs in a web browser?" 
+   questionNumber=1 
+  questionTag="General"
     options={["Java", "C", "Python", "JavaScript"]}
     correctAnswer={3}
     explanation="JavaScript is the programming language of the Web."
