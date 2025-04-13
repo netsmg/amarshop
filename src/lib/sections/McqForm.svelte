@@ -7,21 +7,84 @@
     let score = 0;
     let submitted = false;
 
-    const mcqs = [
-        {
-            question: "What is the capital of France?",
-            options: ["London", "Berlin", "Paris", "Madrid"],
-            correct: 2,
-            explanation: "Paris is the capital and most populous city of France."
-        },
-        {
-            question: "Which language runs in a web browser?",
-            options: ["Java", "C", "Python", "JavaScript"],
-            correct: 3,
-            explanation: "JavaScript is the programming language of the Web."
-        },
-        // Add more questions
-    ];
+const mcqs = [
+    {
+        question: "What is the capital of France?",
+        options: ["London", "Berlin", "Paris", "Madrid"],
+        correct: 2,
+        explanation: "Paris is the capital and most populous city of France."
+    },
+    {
+        question: "Which language runs in a web browser?",
+        options: ["Java", "C", "Python", "JavaScript"],
+        correct: 3,
+        explanation: "JavaScript is the programming language of the Web."
+    },
+    {
+        question: "Which company developed the React library?",
+        options: ["Google", "Facebook", "Microsoft", "Amazon"],
+        correct: 1,
+        explanation: "React was developed by Facebook in 2013."
+    },
+    {
+        question: "What does HTML stand for?",
+        options: [
+            "Hyper Trainer Marking Language",
+            "Hyper Text Marketing Language",
+            "Hyper Text Markup Language",
+            "Hyper Tool Multi Language"
+        ],
+        correct: 2,
+        explanation: "HTML stands for Hyper Text Markup Language."
+    },
+    {
+        question: "Which of the following is a NoSQL database?",
+        options: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"],
+        correct: 2,
+        explanation: "MongoDB is a popular NoSQL database."
+    },
+    {
+        question: "Which HTTP method is used to update a resource?",
+        options: ["GET", "POST", "PUT", "DELETE"],
+        correct: 2,
+        explanation: "PUT is used to update an existing resource."
+    },
+    {
+        question: "What is the default port for HTTP?",
+        options: ["21", "80", "443", "3306"],
+        correct: 1,
+        explanation: "Port 80 is the default for HTTP."
+    },
+    {
+        question: "Which of the following is a JavaScript framework?",
+        options: ["Django", "Laravel", "Vue.js", "Flask"],
+        correct: 2,
+        explanation: "Vue.js is a progressive JavaScript framework."
+    },
+    {
+        question: "What does CSS stand for?",
+        options: [
+            "Cascading Style Sheets",
+            "Creative Style System",
+            "Computer Style Syntax",
+            "Colorful Style Sheets"
+        ],
+        correct: 0,
+        explanation: "CSS stands for Cascading Style Sheets."
+    },
+    {
+        question: "What does API stand for?",
+        options: [
+            "Application Programming Interface",
+            "Advanced Programming Integration",
+            "Application Processing Interface",
+            "Applied Program Internet"
+        ],
+        correct: 0,
+        explanation: "API stands for Application Programming Interface."
+    }
+];
+    
 
     const handleNext = () => {
         if (currentQuestion < mcqs.length - 1) {
