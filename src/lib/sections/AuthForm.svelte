@@ -123,7 +123,7 @@
         place-items: center;
         min-height: 100vh;
         padding: 2rem;
-        background-color: var(--background-200);
+        
     }
 
     .auth-card {
