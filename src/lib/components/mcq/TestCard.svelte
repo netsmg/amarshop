@@ -22,12 +22,16 @@
 <article class="mcq-card" use:borderAnimation>
     <div class="mcq__header">
         <h2 use:decodeAnimation>{question}</h2> 
+{#each options as option, index (index)}
+
 <span class="option-tag">{option.tag || 'no tag'}</span>
 
+{/each}
     </div>
 
     <div class="mcq__options">
         {#each options as option, index (index)}
+
             <button
                 class="option {selectedAnswer === index ? 'selected' : ''}
                        {showFeedback ? (index === correctAnswer ? 'correct' : 'incorrect') : ''}"
