@@ -110,26 +110,14 @@
         <div class="auth-footer">
             <button on:click={() => isLogin = !isLogin} class="toggle-auth">
                 {isLogin 
-                    ? "Don't have an account? <strong>Sign Up</strong>"
-                    : "Already have an account? <strong>Sign In</strong>"}
+                    ? "Don't have an account? Sign Up"
+                    : "Already have an account? Sign In"}
             </button>
         </div>
     </div>
 </section>
 
 <style>
-    :global(:root) {
-        --primary-500: #6366f1;
-        --primary-600: #4f46e5;
-        --error-500: #ef4444;
-        --success-500: #10b981;
-        --text-100: #1e293b;
-        --text-200: #64748b;
-        --background-100: #ffffff;
-        --background-200: #f8fafc;
-        --transition: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
     .auth-container {
         display: grid;
         place-items: center;
