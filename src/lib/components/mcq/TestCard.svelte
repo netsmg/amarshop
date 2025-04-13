@@ -21,7 +21,9 @@
 
 <article class="mcq-card" use:borderAnimation>
     <div class="mcq__header">
-        <h2 use:decodeAnimation>{question}</h2>
+        <h2 use:decodeAnimation>{question}</h2> 
+<span class="option-tag">{option.tag || 'no tag'}</span>
+
     </div>
 
     <div class="mcq__options">
@@ -37,7 +39,7 @@
                     <span class="option-text">{option}</span>
                 </div>
                 <div class="option-right">
-                    <span class="option-tag">{option.tag || 'no tag'}</span>
+                    
                     {#if showFeedback && index === correctAnswer}
                         <Checkmark class="feedback-icon" />
                     {:else if showFeedback && selectedAnswer === index}
@@ -129,7 +131,7 @@
 
     .option-tag {
         background: var(--background-300);
-        color: var(--text-300);
+        color: var(--primary-500);
         padding: var(--space-3xs) var(--space-2xs);
         border-radius: 1rem;
         font-size: var(--step--2);
