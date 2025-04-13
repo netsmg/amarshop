@@ -2,7 +2,9 @@
     import { borderAnimation, decodeAnimation } from '$lib/actions/animation';
     import { Checkmark, Cross } from '$lib/icons';
 
+    export let questionNumber: number;
     export let question: string;
+    export let questionTag?: string;
     export let options: Array<{ text: string; tag?: string }>;
     export let correctAnswer: number;
     export let explanation: string;
@@ -21,17 +23,17 @@
 
 <article class="mcq-card" use:borderAnimation>
     <div class="mcq__header">
-        <h2 use:decodeAnimation>{question}</h2> 
-{#each options as option, index (index)}
-
-<span class="option-tag">{option.tag || 'no tag'}</span>
-
-{/each}
+        <div class="question-meta">
+            <span class="question-number">Question {questionNumber}</span>
+            {#if questionTag}
+                <span class="question-tag">{questionTag}</span>
+            {/if}
+        </div>
+        <h2 use:decodeAnimation>{question}</h2>
     </div>
 
     <div class="mcq__options">
         {#each options as option, index (index)}
-
             <button
                 class="option {selectedAnswer === index ? 'selected' : ''}
                        {showFeedback ? (index === correctAnswer ? 'correct' : 'incorrect') : ''}"
@@ -40,10 +42,12 @@
             >
                 <div class="option-left">
                     <span class="option-number">{getLetter(index)}.</span>
-                    <span class="option-text">{option}</span>
+                    <span class="option-text">{option.text}</span>
                 </div>
                 <div class="option-right">
-                    
+                    {#if option.tag}
+                        <span class="option-tag">{option.tag}</span>
+                    {/if}
                     {#if showFeedback && index === correctAnswer}
                         <Checkmark class="feedback-icon" />
                     {:else if showFeedback && selectedAnswer === index}
@@ -72,6 +76,28 @@
         gap: var(--space-m);
         transition: var(--transition-bounce);
         background: var(--background-100);
+    }
+
+    .question-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--space-s);
+        margin-bottom: var(--space-xs);
+    }
+
+    .question-number {
+        font-weight: 600;
+        color: var(--primary-500);
+        font-size: var(--step--1);
+    }
+
+    .question-tag {
+        background: var(--primary-100);
+        color: var(--primary-500);
+        padding: var(--space-3xs) var(--space-xs);
+        border-radius: 1rem;
+        font-size: var(--step--2);
+        line-height: 1;
     }
 
     .mcq__header h2 {
@@ -135,7 +161,7 @@
 
     .option-tag {
         background: var(--background-300);
-        color: var(--primary-500);
+        color: var(--text-300);
         padding: var(--space-3xs) var(--space-2xs);
         border-radius: 1rem;
         font-size: var(--step--2);
