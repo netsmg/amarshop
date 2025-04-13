@@ -49,7 +49,7 @@
 
   <main class="question-container">
     {#key currentQuestion}
-    <div transition:fade class="question-card">
+    <div  class="question-card">
       <h2 class="question-text">{questions[currentQuestion].question}</h2>
       <div class="options-grid">
         {#each questions[currentQuestion].options as option, index (index)}
