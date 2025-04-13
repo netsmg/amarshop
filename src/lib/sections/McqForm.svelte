@@ -1,9 +1,9 @@
 <script>
     import { borderAnimation } from '$lib/actions/animation';
-    import { ArrowLeft, ArrowRight } from '$lib/icons';
+    import { ArrowLeft, ArrowRight, Checkmark, Cross } from '$lib/icons';
     
     let currentQuestion = 0;
-    let selectedAnswer = null;
+    let selectedAnswers = [];
     let score = 0;
     let submitted = false;
 
@@ -20,34 +20,39 @@
             correct: 3,
             explanation: "JavaScript is the programming language of the Web."
         },
-        // Add more questions here
+        // Add more questions
     ];
 
     const handleNext = () => {
         if (currentQuestion < mcqs.length - 1) {
             currentQuestion++;
-            selectedAnswer = null;
         }
     };
 
     const handlePrevious = () => {
         if (currentQuestion > 0) {
             currentQuestion--;
-            selectedAnswer = null;
         }
     };
 
-    const submitQuiz = () => {
+    const handleSubmit = () => {
         submitted = true;
         score = mcqs.reduce((acc, question, idx) => 
             acc + (selectedAnswers[idx] === question.correct ? 1 : 0), 0);
+    };
+
+    const handleOptionSelect = (index) => {
+        selectedAnswers[currentQuestion] = index;
     };
 </script>
 
 <section class="mcq-container">
     {#if !submitted}
-        <div class="progress">
-            Question {currentQuestion + 1} of {mcqs.length}
+        <div class="progress-bar">
+            <div 
+                class="progress-fill" 
+                style={`width: ${(currentQuestion + 1) / mcqs.length * 100}%`}
+            ></div>
         </div>
 
         <div class="question-card">
@@ -55,15 +60,16 @@
             
             <div class="options-container">
                 {#each mcqs[currentQuestion].options as option, index (index)}
-                    <label 
-                        class="option {selectedAnswer === index ? 'selected' : ''}"
+                    <label
+                        class="option {selectedAnswers[currentQuestion] === index ? 'selected' : ''}"
                         use:borderAnimation
                     >
-                        <input 
-                            type="radio" 
-                            name="mcq-option" 
-                            value={index} 
-                            bind:group={selectedAnswer}
+                        <input
+                            type="radio"
+                            name="mcq-option"
+                            value={index}
+                            checked={selectedAnswers[currentQuestion] === index}
+                            on:change={() => handleOptionSelect(index)}
                         />
                         <span class="option-text">{option}</span>
                     </label>
@@ -77,20 +83,29 @@
                     disabled={currentQuestion === 0}
                 >
                     <ArrowLeft />
-                    Previous
+                    <span class="btn-text">Previous</span>
                 </button>
 
+                <div class="progress-text">
+                    Question {currentQuestion + 1} of {mcqs.length}
+                </div>
+
                 {#if currentQuestion === mcqs.length - 1}
-                    <button class="btn submit-btn" on:click={submitQuiz}>
-                        Submit
+                    <button 
+                        class="btn submit-btn {selectedAnswers[currentQuestion] === undefined ? 'disabled' : ''}"
+                        on:click={handleSubmit}
+                        disabled={selectedAnswers[currentQuestion] === undefined}
+                    >
+                        <span class="btn-text">Submit</span>
+                        <ArrowRight />
                     </button>
                 {:else}
                     <button 
-                        class="btn {!selectedAnswer ? 'disabled' : ''}"
+                        class="btn {selectedAnswers[currentQuestion] === undefined ? 'disabled' : ''}"
                         on:click={handleNext}
-                        disabled={!selectedAnswer}
+                        disabled={selectedAnswers[currentQuestion] === undefined}
                     >
-                        Next
+                        <span class="btn-text">Next</span>
                         <ArrowRight />
                     </button>
                 {/if}
@@ -98,28 +113,64 @@
         </div>
     {:else}
         <div class="results">
-            <h2>Your Score: {score}/{mcqs.length}</h2>
-            
-            {#each mcqs as question, index}
-                <div class="result-item">
-                    <h3>Q{index + 1}: {question.question}</h3>
-                    <p class="correct-answer">Correct answer: {question.options[question.correct]}</p>
-                    {#if selectedAnswers[index] !== question.correct}
-                        <p class="user-answer">Your answer: {question.options[selectedAnswers[index]]}</p>
-                    {/if}
-                    <p class="explanation">{question.explanation}</p>
+            <div class="score-card">
+                <div class="score-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="score-bg" cx="50" cy="50" r="45" />
+                        <circle 
+                            class="score-progress"
+                            cx="50" 
+                            cy="50" 
+                            r="45"
+                            stroke-dasharray={`${(score / mcqs.length) * 283} 283`}
+                        />
+                        <text x="50" y="55" class="score-text">
+                            {score}/{mcqs.length}
+                        </text>
+                    </svg>
                 </div>
-            {/each}
+                <h2>Quiz Completed!</h2>
+            </div>
 
-            <button class="btn retry-btn" on:click={() => location.reload()}>
+            <div class="results-breakdown">
+                {#each mcqs as question, index}
+                    <div class="result-item {selectedAnswers[index] === question.correct ? 'correct' : 'incorrect'}">
+                        <div class="result-status">
+                            {#if selectedAnswers[index] === question.correct}
+                                <Checkmark class="icon-check" />
+                            {:else}
+                                <Cross class="icon-cross" />
+                            {/if}
+                        </div>
+                        <div class="result-content">
+                            <h3>Q{index + 1}: {question.question}</h3>
+                            <p class="correct-answer">Correct: {question.options[question.correct]}</p>
+                            {#if selectedAnswers[index] !== question.correct}
+                                <p class="user-answer">Your answer: {question.options[selectedAnswers[index]]}</p>
+                            {/if}
+                            <p class="explanation">{question.explanation}</p>
+                        </div>
+                    </div>
+                {/each}
+            </div>
+
+            <button class="btn retry-btn" on:click={() => {
+                currentQuestion = 0;
+                selectedAnswers = [];
+                submitted = false;
+                score = 0;
+            }}>
                 Try Again
             </button>
         </div>
     {/if}
 </section>
 
+
+
+
 <style>
-    .mcq-container {
+ .mcq-container {
         max-width: 800px;
         margin: 0 auto;
         padding: var(--space-l);
@@ -212,5 +263,151 @@
     .retry-btn {
         background: var(--primary-500);
         margin-top: var(--space-l);
+    }
+
+    
+    .progress-bar {
+        height: 8px;
+        background: var(--background-300);
+        border-radius: 4px;
+        margin-bottom: var(--space-l);
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: var(--primary-500);
+        transition: width 0.3s ease;
+    }
+
+    .score-card {
+        text-align: center;
+        margin-bottom: var(--space-xl);
+    }
+
+    .score-circle {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto var(--space-m);
+        position: relative;
+    }
+
+    .score-circle svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .score-bg {
+        fill: none;
+        stroke: var(--background-300);
+        stroke-width: 8;
+    }
+
+    .score-progress {
+        fill: none;
+        stroke: var(--primary-500);
+        stroke-width: 8;
+        stroke-linecap: round;
+        transform: rotate(-90deg);
+        transform-origin: center;
+        transition: stroke-dasharray 0.8s ease;
+    }
+
+    .score-text {
+        font-size: 24px;
+        font-weight: bold;
+        dominant-baseline: middle;
+        text-anchor: middle;
+        fill: var(--text-100);
+    }
+
+    .result-item {
+        display: flex;
+        gap: var(--space-m);
+        padding: var(--space-m);
+        margin-bottom: var(--space-m);
+        border-radius: 8px;
+        background: var(--background-200);
+    }
+
+    .result-item.correct {
+        border-left: 4px solid var(--success-500);
+    }
+
+    .result-item.incorrect {
+        border-left: 4px solid var(--error-500);
+    }
+
+    .result-status {
+        flex-shrink: 0;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-check {
+        color: var(--success-500);
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon-cross {
+        color: var(--error-500);
+        width: 24px;
+        height: 24px;
+    }
+
+    @media (max-width: 768px) {
+        .mcq-container {
+            padding: var(--space-s);
+        }
+
+        .question-card {
+            padding: var(--space-m);
+        }
+
+        .navigation-controls {
+            flex-direction: column;
+            gap: var(--space-s);
+        }
+
+        .progress-text {
+            text-align: center;
+            order: -1;
+        }
+
+        .result-item {
+            flex-direction: column;
+            gap: var(--space-s);
+        }
+
+        .result-status {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+        }
+
+        .score-text {
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .option {
+            padding: var(--space-s) var(--space-xs);
+        }
+
+        .btn-text {
+            display: none;
+        }
+
+        .progress-text {
+            font-size: var(--step--1);
+        }
     }
 </style>
