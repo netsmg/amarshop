@@ -4,7 +4,7 @@
 
     export let questionNumber: number;
     export let question: string;
-    export let questionTag?: string;
+    export let questionTag: string | undefined;  // Fixed optional prop syntax
     export let options: Array<{ text: string; tag?: string }>;
     export let correctAnswer: number;
     export let explanation: string;
@@ -31,6 +31,9 @@
         </div>
         <h2 use:decodeAnimation>{question}</h2>
     </div>
+
+    <!-- Rest of the template remains the same -->
+
 
     <div class="mcq__options">
         {#each options as option, index (index)}
