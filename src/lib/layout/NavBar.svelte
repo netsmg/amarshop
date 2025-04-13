@@ -32,7 +32,7 @@
 		<div use:borderAnimation class="nav__left">
 			<a href="/" class="left__brand">
 				<Logo width="24" height="24" />
-				<div>NVAULT</div>
+				<div>Amar Shop</div>
 			</a>
 		</div>
 		<div use:borderAnimation class="nav__mid">Khoa Nguyen / NFT Market ©2025</div>
@@ -59,8 +59,8 @@
 	<a
 		onclick={toggleMenu}
 		class="nav__link--mobile"
-		class:active={currentPath === '/products'}
-		href="/products">Shop</a>
+		class:active={currentPath === '/shop'}
+		href="/shop">Shop</a>
 	<a
 		onclick={toggleMenu}
 		class="nav__link--mobile"
