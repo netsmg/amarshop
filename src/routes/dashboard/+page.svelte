@@ -1,6 +1,5 @@
 <script>
   import PageTitle from '$lib/components/PageTitle.svelte';
-  import { fade } from 'svelte/transition';
   let currentQuestion = 0;
   let userAnswers = [];
   let timeLeft = 600; // 10 minutes in seconds
