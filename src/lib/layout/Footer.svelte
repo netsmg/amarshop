@@ -16,14 +16,13 @@
 
 	<div class="footer__copyright">
 		<div use:borderAnimation class="copyright__text">
-			<p>Demonstration website for a beautiful NFT shop.</p>
-			<p>Created by Khoa Nguyen</p>
-			<p>wentallout ©2025 All rights reserved</p>
+			
+			<p>WEBUInet ©2025 All rights reserved</p>
 		</div>
 
 		<div class="copyright__brand">
 			<Logo />
-			<div class="textTrim">NVAULT</div>
+			<div class="textTrim">Amar Shop</div>
 		</div>
 	</div>
 </footer>
