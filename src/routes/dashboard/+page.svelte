@@ -84,13 +84,7 @@
   </main>
 </div>
 <style global lang="postcss">
-  :root {
-    --color-primary: #3b82f6;
-    --color-primary-dark: #2563eb;
-    --color-secondary: #e2e8f0;
-    --color-secondary-dark: #cbd5e1;
-    --color-text: #1e293b;
-  }
+  
 
   .container {
     max-width: 800px;
