@@ -12,7 +12,19 @@
 
 <section class="contact">
 	
-	<McqCard />
+	<McqCard
+    question="What is the capital of France?"
+    options={["London", "Berlin", "Paris", "Madrid"]}
+    correctAnswer={2}
+    explanation="Paris is the capital and most populous city of France."
+/>
+<McqCard
+    question="What is the capital of France?"
+    options={["London", "Berlin", "Paris", "Madrid"]}
+    correctAnswer={2}
+    explanation="Paris is the capital and most populous city of France."
+/>
+
 </section>
 
 <style>
