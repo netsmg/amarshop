@@ -189,7 +189,7 @@
         }
 
         .explanation {
-            color: var(--text-300);
+            color: var(--background-300);
             font-size: var(--step--1);
             margin-top: var(--space-xs);
         }
