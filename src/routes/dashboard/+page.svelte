@@ -2,7 +2,7 @@
   import PageTitle from '$lib/components/PageTitle.svelte';
   let currentQuestion = 0;
   let userAnswers = [];
-  let timeLeft = 600; // 10 minutes in seconds
+  let timeLeft = 600; // 10 minutes
   let isExamMode = false;
 
   const questions = [
@@ -29,13 +29,12 @@
   const progress = () => (currentQuestion / (questions.length - 1)) * 100;
 </script>
 
- <svelte:head>
-	<title>Dashboard | AmarShop</title>
-	<meta name="description" content="Amar Shop dashboard" />
+<svelte:head>
+  <title>Dashboard | AmarShop</title>
+  <meta name="description" content="Amar Shop dashboard" />
 </svelte:head>
 
 <PageTitle pageTitle="Dashboard" />
-
 
 <div class="container">
   <header class="header">
@@ -49,13 +48,12 @@
 
   <main class="question-container">
     {#key currentQuestion}
-    <div  class="question-card">
+    <div class="question-card">
       <h2 class="question-text">{questions[currentQuestion].question}</h2>
       <div class="options-grid">
         {#each questions[currentQuestion].options as option, index (index)}
           <button
-            class="option-button"
-            class:selected={userAnswers[currentQuestion] === index}
+            class="option-button {userAnswers[currentQuestion] === index ? 'selected' : ''}"
             on:click={() => handleAnswer(index)}
           >
             {option}
@@ -84,19 +82,109 @@
   </main>
 </div>
 
-
 <style global lang="postcss">
-  
-  /* Rest of your styles */
-  .option-button {
-    @mixin button secondary;
-    text-align: left;
-    justify-content: flex-start;
-    padding: 1rem;
+  :root {
+    --color-primary: #3b82f6;
+    --color-primary-dark: #2563eb;
+    --color-secondary: #e2e8f0;
+    --color-secondary-dark: #cbd5e1;
+    --color-text: #1e293b;
+  }
 
-    &.selected {
-      @mixin button primary;
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .header progress {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .question-container {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .question-text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+  }
+
+  .options-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .options-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
-</style>
 
+  .option-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .option-button:hover {
+    background-color: var(--color-secondary-dark);
+  }
+
+  .option-button.selected {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .nav-button {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .timer {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+</style>
