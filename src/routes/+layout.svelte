@@ -1,4 +1,5 @@
-<script>
+<script> 
+        import BgDeco from '$lib/components/BgDeco.svelte';
 	import Footer from '$lib/layout/Footer.svelte';
 	import NavBar from '$lib/layout/NavBar.svelte';
 	import '@fontsource/russo-one';
@@ -19,7 +20,8 @@
 </script>
 
 <NavBar />
-<main class="">
+<main class=""> 
+<BgDeco />
 	{@render children?.()}
 </main>
 
