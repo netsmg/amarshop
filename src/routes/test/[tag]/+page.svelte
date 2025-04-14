@@ -18,11 +18,11 @@
     let examStarted = false;
     let examEnded = false;
     let score = 0;
-    
-    // Timer implementation
+
+    // Timer implementation using Svelte store
     const initialTime = writable(0);
     let timerInterval;
-    
+
     // Authentication check
     if (!auth.currentUser) {
         throw redirect(302, '/login');
@@ -34,25 +34,25 @@
             const examSnapshot = await getDocs(
                 query(collection(db, 'exams'), where("examTag", "==", data.tag))
             );
-            
+
             if (examSnapshot.empty) throw new Error('Exam not found');
             examDetails = examSnapshot.docs[0].data();
             initialTime.set(examDetails.duration * 60);
-            
+
             // Get questions
             const questionsSnapshot = await getDocs(
                 query(collection(db, 'mcqQuestions'), where("questionTag", "==", data.tag))
             );
-            
+
             questions = questionsSnapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data()
             }));
-            
-            userAnswers = new Array(questions.length).fill(null);
-            
+
+            userAnswers = Array(questions.length).fill(null);
+
             if (questions.length === 0) throw new Error('No questions found');
-            
+
         } catch (err) {
             error = err.message;
         } finally {
@@ -81,13 +81,17 @@
             q.correctAnswer === userAnswers[idx] ? acc + 1 : acc, 0);
         
         // Save result to Firestore
-        await addDoc(collection(db, 'examResults'), {
-            userId: auth.currentUser.uid,
-            examTag: data.tag,
-            score,
-            total: questions.length,
-            timestamp: new Date()
-        });
+        try {
+            await addDoc(collection(db, 'examResults'), {
+                userId: auth.currentUser.uid,
+                examTag: data.tag,
+                score,
+                total: questions.length,
+                timestamp: new Date()
+            });
+        } catch (err) {
+            console.error('Error saving exam result:', err);
+        }
     };
 
     const formatTime = (seconds) => {
@@ -96,14 +100,20 @@
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
 
-    onDestroy(() => clearInterval(timerInterval));
+    onDestroy(() => {
+        clearInterval(timerInterval);
+    });
 </script>
 
 <svelte:head>
     <title>{examDetails?.examName || 'Exam'} | Amar Shop</title>
 </svelte:head>
 
-{#if !examStarted && !loading && !error}
+{#if loading}
+    <p>Loading exam...</p>
+{:else if error}
+    <p class="error">{error}</p>
+{:else if !examStarted}
     <div class="exam-instructions">
         <PageTitle pageTitle="Exam Guidelines" />
         <h2>Important Instructions</h2>
@@ -119,22 +129,24 @@
     <div class="exam-results">
         <h2>Exam Results</h2>
         <p>Your Score: {score}/{questions.length}</p>
-        <p>Percentage: {(score/questions.length*100).toFixed(1)}%</p>
+        <p>Percentage: {(score / questions.length * 100).toFixed(1)}%</p>
     </div>
-{:else if examDetails}
+{:else}
     <PageTitle pageTitle={examDetails.examName} />
     <div class="exam-header">
         <div class="exam-controls">
-            <div class="timer">{$initialTime | formatTime}</div>
-            <progress value={currentQuestion + 1} max={questions.length} />
+            <div class="timer">{formatTime($initialTime)}</div>
+            <progress value={currentQuestion + 1} max={questions.length}></progress>
             <div class="navigation">
                 <button 
                     disabled={currentQuestion === 0}
-                    on:click={() => currentQuestion--}>Previous
+                    on:click={() => currentQuestion--}>
+                    Previous
                 </button>
                 <button 
                     disabled={currentQuestion === questions.length - 1}
-                    on:click={() => currentQuestion++}>Next
+                    on:click={() => currentQuestion++}>
+                    Next
                 </button>
                 <button on:click={submitExam}>Submit Exam</button>
             </div>
@@ -142,20 +154,16 @@
         
         <div class="question-list">
             {#each questions as _, i}
-<div 
-    class="question-indicator"
-    class:active={i === currentQuestion}
-    class:answered={userAnswers[i]}
-    on:click={() => currentQuestion = i}
->
-    {i + 1}
-</div>
-                
+                <div 
+                    class="question-indicator {i === currentQuestion ? 'active' : ''} {userAnswers[i] !== null ? 'answered' : ''}"
+                    on:click={() => currentQuestion = i}>
+                    {i + 1}
+                </div>
             {/each}
         </div>
     </div>
 
-    <section class="contact">
+    <section class="question-section">
         <McqCard
             question={questions[currentQuestion].question}
             questionNumber={currentQuestion + 1}
