@@ -142,13 +142,15 @@
         
         <div class="question-list">
             {#each questions as _, i}
-                <div 
-                    class="question-indicator {i === currentQuestion ? 'active' : ''} 
-                    {userAnswers[i] ? 'answered' : ''}
-                    on:click={() => currentQuestion = i}
-                >
-                    {i + 1}
-                </div>
+<div 
+    class="question-indicator"
+    class:active={i === currentQuestion}
+    class:answered={userAnswers[i]}
+    on:click={() => currentQuestion = i}
+>
+    {i + 1}
+</div>
+                
             {/each}
         </div>
     </div>
