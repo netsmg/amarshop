@@ -8,6 +8,8 @@ import Eth from '~icons/iconoir/ethereum-circle';
 import Checkmark from '~icons/iconoir/check';
 import Cross from '~icons/iconoir/cancel';
 import Lock from '~icons/iconoir/lock';
+import Book from '~icons/iconoir/book';
+import Clock from '~icons/iconoir/clock';
 
 export {
   ArrowRight,
@@ -20,4 +22,6 @@ export {
   Checkmark,
   Cross,
   Lock,
+  Book,
+  Clock,
 };
