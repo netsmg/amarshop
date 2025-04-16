@@ -32,7 +32,7 @@
 		<div use:borderAnimation class="nav__left">
 			<a href="/" class="left__brand">
 				<Logo width="24" height="24" />
-				<div>Amar Shop</div>
+				<div>MCQ STORE</div>
 			</a>
 		</div>
 		<div use:borderAnimation class="nav__mid">Khoa Nguyen / NFT Market ©2025</div>
