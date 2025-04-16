@@ -17,12 +17,12 @@
 	<div class="footer__copyright">
 		<div use:borderAnimation class="copyright__text">
 			
-			<p>WEBUInet ©2025 All rights reserved</p>
+			<p> <a href="/">MCQSTORE</a> © 2025 All rights reserved</p>
 		</div>
 
 		<div class="copyright__brand">
 			<Logo />
-			<div class="textTrim">Amar Shop</div>
+			<div class="textTrim">MCQSTORE</div>
 		</div>
 	</div>
 </footer>
