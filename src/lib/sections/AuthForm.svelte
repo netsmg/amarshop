@@ -130,8 +130,8 @@
         <div class="auth-footer">
             <button on:click={() => isLogin = !isLogin} class="toggle-auth">
                 {isLogin 
-                    ? "Don't have an account? <strong>Sign Up</strong>"
-                    : "Already have an account? <strong>Sign In</strong>"}
+                    ? "Don't have an account? Sign Up"
+                    : "Already have an account? Sign In"}
             </button>
         </div>
     </div>
