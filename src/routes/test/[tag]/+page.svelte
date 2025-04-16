@@ -109,7 +109,7 @@
 <svelte:head>
     <title>{examDetails?.examName || 'Exam'} | Amar Shop</title>
 </svelte:head>
-
+<section class="contact">
 {#if examDetails}
     <PageTitle pageTitle={examDetails.examName} />
 {/if}
@@ -158,7 +158,7 @@
             </button>
         </div>
 
-        <section class="contact">
+        
             {#each questions as question (question.id)}
                 <McqCard
                     {question}
@@ -166,20 +166,23 @@
                     on:select={(e) => userAnswers[question.id] = e.detail}
                 />
             {/each}
-        </section>
+        
     </div>
 {/if}
-
+</section>
 <style>
-    
+.contact{
+    padding: var(--space-l) var(--space-m);
+	}
 
 .card {
         position: relative;
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
         border-radius: 16px;
-        padding: var(--space-l) var(--space-m);
-	    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        display: flex;
+        allign-items: centre;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         text-decoration: none;
         color: #1f2937;
@@ -213,5 +216,7 @@
     .loading {
         text-align: center;
         padding: 2rem;
-    }
+    } 
+
+
 </style>
