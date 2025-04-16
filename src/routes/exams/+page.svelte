@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { db } from '$lib/firebase';
     import { collection, getDocs } from 'firebase/firestore';
-    
+    import { Book, Clock } from '$lib/icons';
     let exams = [];
     let loading = true;
     let error = null;
@@ -51,11 +51,11 @@
                     <p class="exam-description">{exam.description}</p>
                     <div class="exam-meta">
                         <div class="meta-item">
-                            <span class="icon">📚</span>
+                            <span class="icon"> <Book /> </span>
                             {exam.totalQuestions} Questions
                         </div>
                         <div class="meta-item">
-                            <span class="icon">⏳</span>
+                            <span class="icon"> <Clock /> </span>
                             {exam.duration} mins
                         </div>
                     </div>
