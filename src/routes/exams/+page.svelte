@@ -30,7 +30,7 @@
 </svelte:head>
 
 <div class="exams-container">
-    <h1>Exam Challenges</h1>
+    <h1 class="bengali">পরীক্ষা দাও</h1>
     
     {#if loading}
         <div class="loading-spinner">
