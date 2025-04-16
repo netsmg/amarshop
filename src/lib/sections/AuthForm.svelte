@@ -137,9 +137,10 @@
     </div>
 </section>
 
+
 <style>
     :global(body) {
-        background: var(--background-200);
+        background: #f0f4f8;
     }
 
     .auth-container {
@@ -153,18 +154,18 @@
         width: 100%;
         max-width: 440px;
         padding: 2.5rem;
-        background: var(--background-100);
+        background: #ffffff;
         border-radius: 1.5rem;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
                     0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s var(--transition);
+        transition: all 0.3s ease;
     }
 
     .auth-title {
         position: relative;
         font-size: 1.875rem;
         font-weight: 700;
-        color: var(--text-100);
+        color: #2d3748;
         margin-bottom: 2.5rem;
         text-align: center;
     }
@@ -172,7 +173,7 @@
     .accent-bar {
         width: 60px;
         height: 4px;
-        background: var(--primary-500);
+        background: #4299e1;
         margin: 1rem auto 0;
         border-radius: 2px;
     }
@@ -188,40 +189,40 @@
         font-size: 1rem;
         background: transparent;
         border: none;
-        border-bottom: 2px solid var(--primary-100);
-        transition: all 0.3s var(--transition);
+        border-bottom: 2px solid #cbd5e0;
+        transition: all 0.3s ease;
     }
 
     .modern-input.error {
-        border-color: var(--error-500);
+        border-color: #e53e3e;
     }
 
     .modern-input:focus {
         outline: none;
-        border-color: var(--primary-500);
-        box-shadow: 0 2px 0 0 var(--primary-100);
+        border-color: #4299e1;
+        box-shadow: 0 2px 0 0 #ebf8ff;
     }
 
     .input-group label {
         position: absolute;
         top: 1rem;
         left: 0.75rem;
-        color: var(--text-300);
+        color: #718096;
         transform-origin: left center;
-        transition: all 0.3s var(--transition);
+        transition: all 0.3s ease;
     }
 
     .modern-input:focus + label,
     .modern-input:not(:placeholder-shown) + label {
         transform: translateY(-1.25rem) scale(0.85);
-        color: var(--primary-500);
+        color: #4299e1;
     }
 
     .underline {
         height: 2px;
-        background: var(--primary-500);
+        background: #4299e1;
         transform: scaleX(0);
-        transition: transform 0.3s var(--transition);
+        transition: transform 0.3s ease;
     }
 
     .modern-input:focus ~ .underline {
@@ -229,28 +230,70 @@
     }
 
     .auth-button {
-        /* Keep existing styles, add these enhancements */
         margin-top: 1.5rem;
         padding: 1.1rem;
         gap: 1rem;
         transition: transform 0.2s, box-shadow 0.2s;
+        background: #4299e1;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .auth-button:hover:not(:disabled) {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px -2px rgba(var(--primary-500-rgb), 0.25);
+        box-shadow: 0 4px 12px -2px rgba(66, 153, 225, 0.25);
+        background: #3182ce;
+    }
+
+    .auth-button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 
     .toggle-auth {
-        color: var(--text-300);
+        color: #718096;
         padding: 0.75rem;
         margin-top: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 0.875rem;
     }
 
     .toggle-auth strong {
-        color: var(--primary-500);
+        color: #4299e1;
         font-weight: 600;
         margin-left: 0.5rem;
+    }
+
+    /* Error/Success alerts */
+    .alert {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .error {
+        background-color: rgba(229, 62, 62, 0.1);
+        color: #e53e3e;
+        border-left: 3px solid #e53e3e;
+    }
+
+    .success {
+        background-color: rgba(72, 187, 120, 0.1);
+        color: #48bb78;
+        border-left: 3px solid #48bb78;
     }
 
     @media (max-width: 640px) {
@@ -279,3 +322,4 @@
         }
     }
 </style>
+
