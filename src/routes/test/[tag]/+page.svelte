@@ -120,7 +120,7 @@
     <div class="error">{error}</div>
 {:else if !examStarted}
     <!-- Exam Instructions -->
-    <div class="exam-instructions">
+    <div class="card">
         <h2>Exam Guidelines</h2>
         <ul>
             <li>Total Questions: {examDetails.totalQuestions}</li>
@@ -171,24 +171,21 @@
 {/if}
 
 <style>
-    .exam-instructions {
-        max-width: 600px;
-        margin: 2rem auto;
+    
+
+.card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
         padding: 2rem;
-        border: 1px solid #eee;
-        border-radius: 8px;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        color: #1f2937;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.3);
     }
-
-    .exam-instructions button {
-        margin-top: 1rem;
-        padding: 0.5rem 2rem;
-        background: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
     .exam-header {
         display: flex;
         justify-content: space-between;
