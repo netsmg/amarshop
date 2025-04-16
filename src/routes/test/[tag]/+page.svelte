@@ -178,13 +178,13 @@
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
         border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        padding: var(--space-l) var(--space-m);
+	    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         text-decoration: none;
         color: #1f2937;
         overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.3);
+        border: 1px solid var(--primary-100);
     }
     .exam-header {
         display: flex;
