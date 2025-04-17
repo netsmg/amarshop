@@ -31,14 +31,14 @@
 	<nav class="nav">
 		<div use:borderAnimation class="nav__left">
 			<a href="/" class="left__brand">
-				<Logo width="24" height="24" />
+				<Logo  />
 				<div>MCQ STORE</div>
 			</a>
 		</div>
-		<div use:borderAnimation class="nav__mid">Khoa Nguyen / NFT Market ©2025</div>
+		<div use:borderAnimation class="nav__mid">NetSMG</div>
 		<div use:borderAnimation class="nav__right">
 			<a class="nav__link" class:active={currentPath === '/'} href="/">Home</a>
-			<a class="nav__link" class:active={currentPath === '/products'} href="/products">Shop</a>
+			<a class="nav__link" class:active={currentPath === '/exams'} href="/exams">Quizzes</a>
 			<a class="nav__link" class:active={currentPath === '/about'} href="/about">About</a>
 			<a class="nav__link" class:active={currentPath === '/contact'} href="/contact">Contact</a>
 
@@ -59,8 +59,8 @@
 	<a
 		onclick={toggleMenu}
 		class="nav__link--mobile"
-		class:active={currentPath === '/shop'}
-		href="/shop">Shop</a>
+		class:active={currentPath === '/exams'}
+		href="/exams">Quizzes</a>
 	<a
 		onclick={toggleMenu}
 		class="nav__link--mobile"
