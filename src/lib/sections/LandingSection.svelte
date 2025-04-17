@@ -73,7 +73,7 @@ import { Book,
     text-align: center;
 }
 .gradient-text {
-        background: linear-gradient(45deg, 818cf8, f472b6);
+        background: linear-gradient(45deg, #818cf8, #f472b6);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
