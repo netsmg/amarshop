@@ -1,3 +1,9 @@
+<script>
+import { Book,
+  Clock,
+  Search,
+  AutoFlash } from '$lib/icons';
+</script>
 <section class="hero">
     <div class="hero-content">
         <div class="header-group">
@@ -6,7 +12,7 @@
             
             <div class="search-container">
                 <input type="text" placeholder="Search quizzes by subject or topic..." class="search-input">
-                <button class="search-button">🔍</button>
+                <button class="search-button"> <Search /> </button>
             </div>
             
             <a href="/quizzes" class="cta-button">
@@ -28,19 +34,19 @@
 
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">📚</div>
+                <div class="feature-icon"> <Book /> </div>
                 <h4>Wide Range of Topics</h4>
                 <p>Explore 50+ subjects from science to literature</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon"> <AutoFlash /> </div>
                 <h4>Instant Feedback</h4>
                 <p>Detailed explanations with every answer</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">📱</div>
+                <div class="feature-icon"> <Clock /> </div>
                 <h4>Mobile-Friendly</h4>
                 <p>Seamless experience on any device</p>
             </div>
