@@ -11,7 +11,7 @@ import { Book,
             <h1 class="hero-title" use:borderAnimation>Master Your Knowledge with Free MCQ Quizzes</h1>
             <p class="hero-subtitle" use:decodeAnimation>Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!</p>
             
-            <div class="search-container"  use:decodeAnimation>
+            <div class="search-container">
                 <input type="text" placeholder="Search quizzes by subject or topic..." class="search-input">
                 <button class="search-button"> <Search /> </button>
             </div>
