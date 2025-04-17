@@ -16,7 +16,7 @@ import { Book,
                 <button class="search-button"> <Search /> </button>
             </div>
             
-            <a href="/quizzes" class="cta-button" use:borderAnimation>
+            <a href="/exams" class="cta-button" use:borderAnimation>
                 Start Quiz Now
                 <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
