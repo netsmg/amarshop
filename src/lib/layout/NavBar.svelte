@@ -31,7 +31,7 @@
 	<nav class="nav">
 		<div use:borderAnimation class="nav__left">
 			<a href="/" class="left__brand">
-				<Logo  />
+				<Logo width="24" height="24"  />
 				<div>MCQ STORE</div>
 			</a>
 		</div>
