@@ -8,7 +8,7 @@ import { Book,
 <section class="hero">
     <div class="hero-content">
         <div class="header-group">
-            <h1 class="hero-title" use:borderAnimation>Master Your Knowledge with Free MCQ Quizzes</h1>
+            <h1 class="hero-title" use:borderAnimation> <span class="gradient-text"> Master Your Knowledge </span> with Free MCQ Quizzes</h1>
             <p class="hero-subtitle" use:decodeAnimation>Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!</p>
             
             <div class="search-container">
@@ -72,6 +72,12 @@ import { Book,
     margin: 0 auto;
     text-align: center;
 }
+.gradient-text {
+        background: linear-gradient(45deg, 818cf8, f472b6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 
 .header-group {
     max-width: 800px;
