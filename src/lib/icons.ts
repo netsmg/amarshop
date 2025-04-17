@@ -11,7 +11,7 @@ import Lock from '~icons/iconoir/lock';
 import Book from '~icons/iconoir/book';
 import Clock from '~icons/iconoir/clock';
 import Search from '~icons/iconoir/search';
-impot Auto-flash from '~icons/iconoir/auto-flash';
+impot AutoFlash from '~icons/iconoir/auto-flash';
 
 
 export {
@@ -28,5 +28,5 @@ export {
   Book,
   Clock,
   Search,
-  Auto-flash,
+  AutoFlash,
 };
