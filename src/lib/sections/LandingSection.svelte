@@ -24,7 +24,7 @@ import { Book,
             </a>
         </div>
 
-        <div class="quiz-highlight" use:decodeAnimation>
+        <div class="quiz-highlight">
             <div class="quiz-of-day">
                 <div class="quiz-badge">Quiz of the Day</div>
                 <h3>World History Challenge</h3>
@@ -34,25 +34,25 @@ import { Book,
         </div>
 
         <div class="features-grid">
-            <div class="feature-card" use:decodeAnimation>
+            <div class="feature-card">
                 <div class="feature-icon"> <Book /> </div>
                 <h4>Wide Range of Topics</h4>
                 <p>Explore 50+ subjects from science to literature</p>
             </div>
             
-            <div class="feature-card" use:decodeAnimation>
+            <div class="feature-card">
                 <div class="feature-icon"> <AutoFlash /> </div>
                 <h4>Instant Feedback</h4>
                 <p>Detailed explanations with every answer</p>
             </div>
             
-            <div class="feature-card" use:decodeAnimation>
+            <div class="feature-card">
                 <div class="feature-icon"> <Clock /> </div>
                 <h4>Mobile-Friendly</h4>
                 <p>Seamless experience on any device</p>
             </div>
             
-            <div class="feature-card" use:decodeAnimation>
+            <div class="feature-card">
                 <div class="feature-icon">🎯</div>
                 <h4>Free & Unlimited</h4>
                 <p>Complete access with zero restrictions</p>
@@ -231,5 +231,27 @@ import { Book,
     .quiz-of-day {
         padding: 1.5rem;
     }
+}
+.quiz-start {
+    background-color: #4f46e5; /* Indigo-600 */
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-start:hover {
+    background-color: #4338ca; /* Indigo-700 */
+    transform: scale(1.03);
+}
+
+.quiz-start:active {
+    background-color: #3730a3; /* Indigo-800 */
+    transform: scale(0.98);
 }
 </style>
