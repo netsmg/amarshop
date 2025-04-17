@@ -1,4 +1,5 @@
 <script>
+import { borderAnimation,decodeAnimation } from '$lib/actions/animation';
 import { Book,
   Clock,
   Search,
@@ -7,15 +8,15 @@ import { Book,
 <section class="hero">
     <div class="hero-content">
         <div class="header-group">
-            <h1 class="hero-title">Master Your Knowledge with Free MCQ Quizzes</h1>
-            <p class="hero-subtitle">Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!</p>
+            <h1 class="hero-title" use:borderAnimation>Master Your Knowledge with Free MCQ Quizzes</h1>
+            <p class="hero-subtitle" use:decodeAnimation>Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!</p>
             
-            <div class="search-container">
+            <div class="search-container"  use:decodeAnimation>
                 <input type="text" placeholder="Search quizzes by subject or topic..." class="search-input">
                 <button class="search-button"> <Search /> </button>
             </div>
             
-            <a href="/quizzes" class="cta-button">
+            <a href="/quizzes" class="cta-button" use:borderAnimation>
                 Start Quiz Now
                 <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -23,7 +24,7 @@ import { Book,
             </a>
         </div>
 
-        <div class="quiz-highlight">
+        <div class="quiz-highlight" use:decodeAnimation>
             <div class="quiz-of-day">
                 <div class="quiz-badge">Quiz of the Day</div>
                 <h3>World History Challenge</h3>
@@ -33,25 +34,25 @@ import { Book,
         </div>
 
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card" use:decodeAnimation>
                 <div class="feature-icon"> <Book /> </div>
                 <h4>Wide Range of Topics</h4>
                 <p>Explore 50+ subjects from science to literature</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" use:decodeAnimation>
                 <div class="feature-icon"> <AutoFlash /> </div>
                 <h4>Instant Feedback</h4>
                 <p>Detailed explanations with every answer</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" use:decodeAnimation>
                 <div class="feature-icon"> <Clock /> </div>
                 <h4>Mobile-Friendly</h4>
                 <p>Seamless experience on any device</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" use:decodeAnimation>
                 <div class="feature-icon">🎯</div>
                 <h4>Free & Unlimited</h4>
                 <p>Complete access with zero restrictions</p>
@@ -196,7 +197,12 @@ import { Book,
 .feature-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* center horizontally */
 }
+    
 
 @media (max-width: 768px) {
     .hero-title {
