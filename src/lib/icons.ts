@@ -10,6 +10,9 @@ import Cross from '~icons/iconoir/cancel';
 import Lock from '~icons/iconoir/lock';
 import Book from '~icons/iconoir/book';
 import Clock from '~icons/iconoir/clock';
+import Search from '~icons/iconoir/search';
+impot Auto-flash from '~icons/iconoir/auto-flash';
+
 
 export {
   ArrowRight,
@@ -24,4 +27,6 @@ export {
   Lock,
   Book,
   Clock,
+  Search,
+  Auto-flash,
 };
