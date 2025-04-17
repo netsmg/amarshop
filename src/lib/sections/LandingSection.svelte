@@ -1,5 +1,5 @@
 <script>
-import { borderAnimation,decodeAnimation } from '$lib/actions/animation';
+import { borderAnimation,decodeAnimation, revealAnimation } from '$lib/actions/animation';
 import { Book,
   Clock,
   Search,
@@ -8,10 +8,10 @@ import { Book,
 <section class="hero">
     <div class="hero-content">
         <div class="header-group">
-            <h1 class="hero-title" use:borderAnimation> <span class="gradient-text"> Master Your Knowledge </span> with Free MCQ Quizzes</h1>
+            <h1 class="hero-title"> <span class="gradient-text"> Master Your Knowledge </span> with Free MCQ Quizzes</h1>
             <p class="hero-subtitle" use:decodeAnimation>Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!</p>
             
-            <div class="search-container">
+            <div class="search-container" use:revealAnimation>
                 <input type="text" placeholder="Search quizzes by subject or topic..." class="search-input">
                 <button class="search-button"> <Search /> </button>
             </div>
@@ -25,7 +25,7 @@ import { Book,
         </div>
 
         <div class="quiz-highlight">
-            <div class="quiz-of-day">
+            <div class="quiz-of-day" use:revealAnimation>
                 <div class="quiz-badge">Quiz of the Day</div>
                 <h3>World History Challenge</h3>
                 <p>20 Questions | Medium Difficulty | 4.8★ Rating</p>
@@ -34,25 +34,25 @@ import { Book,
         </div>
 
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card" use:revealAnimation>
                 <div class="feature-icon"> <Book /> </div>
                 <h4>Wide Range of Topics</h4>
                 <p>Explore 50+ subjects from science to literature</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" use:revealAnimation>
                 <div class="feature-icon"> <AutoFlash /> </div>
                 <h4>Instant Feedback</h4>
                 <p>Detailed explanations with every answer</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" use:revealAnimation>
                 <div class="feature-icon"> <Clock /> </div>
                 <h4>Mobile-Friendly</h4>
                 <p>Seamless experience on any device</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" use:revealAnimation>
                 <div class="feature-icon">🎯</div>
                 <h4>Free & Unlimited</h4>
                 <p>Complete access with zero restrictions</p>
