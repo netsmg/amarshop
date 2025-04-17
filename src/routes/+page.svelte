@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-	<title>NVault | Modern NFT Marketplace</title>
-	<meta name="description" content="A modern NFT marketplace featuring exclusive digital masterpieces. Buy, sell, and collect unique NFTs." />
+	<title>Mcq Store | Free mcq </title>
+	<meta name="description" content="Explore free mcq." />
 </svelte:head>
 
 <HeroSection />
