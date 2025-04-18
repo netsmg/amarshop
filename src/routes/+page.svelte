@@ -1,5 +1,6 @@
 <script>
 	import HeroSection from '$lib/sections/LandingSection.svelte';
+        import NextSection from '$lib/sections/NextSection.svelte';
 	// ... other imports
 </script>
 
@@ -9,3 +10,4 @@
 </svelte:head>
 
 <HeroSection />
+<NextSection />
