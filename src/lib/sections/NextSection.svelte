@@ -8,19 +8,19 @@
             name: "Sarah Johnson",
             role: "Med Student",
             text: "Boosted my exam scores by 40%! The interactive quizzes are game-changers.",
-            avatar: "/avatars/sarah.jpg"
+            avatar: "/avatars/testimonial-01.jpg"
         },
         {
             name: "Mike Chen",
             role: "Developer",
             text: "Best way to keep skills sharp. Love the instant explanations!",
-            avatar: "/avatars/mike.jpg"
+            avatar: "/avatars/testimonial-02.jpg"
         },
         {
             name: "Emma Wilson",
             role: "Teacher",
             text: "My students adore the quiz challenges. Engagement skyrocketed!",
-            avatar: "/avatars/emma.jpg"
+            avatar: "/avatars/social-proof03.jpg"
         }
     ];
 
@@ -194,56 +194,7 @@
         color: transparent;
     }
 
-    /* Search Container */
-    .search-container {
-        max-width: 700px;
-        margin: 3rem auto;
-        display: flex;
-        gap: 1rem;
-        background: var(--glass-bg);
-        backdrop-filter: blur(12px);
-        border-radius: 2rem;
-        padding: 0.5rem;
-        border: 1px solid var(--glass-border);
-        transition: transform 0.3s ease;
-    }
-
-    .search-icon {
-        width: 24px;
-        height: 24px;
-        margin-left: 1.5rem;
-        color: var(--secondary);
-    }
-
-    .search-input {
-        flex: 1;
-        background: transparent;
-        border: none;
-        padding: 1.5rem;
-        color: var(--text-primary);
-        font-size: 1.1rem;
-    }
-
-    .search-input::placeholder {
-        color: #94a3b8;
-    }
-
-    .search-button {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 1rem 2.5rem;
-        border-radius: 1.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .search-button:hover {
-        background: #4f46e5;
-        transform: scale(1.05);
-    }
-
+    
     /* Stats Grid */
     .stats-grid {
         display: flex;
@@ -359,12 +310,16 @@
         transform: translateY(-5px);
     }
 
-    .feature-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 1.5rem;
-        color: var(--secondary);
-    }
+    
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* center horizontally */
+}
 
     /* Testimonials */
     .testimonials-section {
