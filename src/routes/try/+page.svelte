@@ -1,46 +1,103 @@
 <script>
     import { borderAnimation, decodeAnimation, revealAnimation } from '$lib/actions/animation';
-    import { Book, Clock, Search, AutoFlash } from '$lib/icons';
+    import { Book, Clock, Search, AutoFlash, ArrowRight } from '$lib/icons';
     import { fade, fly } from 'svelte/transition';
+
+    let testimonials = [
+        {
+            name: "Sarah Johnson",
+            role: "Med Student",
+            text: "Boosted my exam scores by 40%! The interactive quizzes are game-changers.",
+            avatar: "/avatars/sarah.jpg"
+        },
+        {
+            name: "Mike Chen",
+            role: "Developer",
+            text: "Best way to keep skills sharp. Love the instant explanations!",
+            avatar: "/avatars/mike.jpg"
+        },
+        {
+            name: "Emma Wilson",
+            role: "Teacher",
+            text: "My students adore the quiz challenges. Engagement skyrocketed!",
+            avatar: "/avatars/emma.jpg"
+        }
+    ];
+
+    let trendingQuizzes = [
+        {
+            title: "JavaScript Mastery",
+            category: "Programming",
+            questions: 25,
+            difficulty: "Advanced",
+            attempts: "1.2K"
+        },
+        {
+            title: "Human Anatomy",
+            category: "Biology",
+            questions: 30,
+            difficulty: "Intermediate",
+            attempts: "890"
+        },
+        {
+            title: "World Capitals",
+            category: "Geography",
+            questions: 50,
+            difficulty: "Easy",
+            attempts: "2.4K"
+        }
+    ];
 </script>
+
+
 
 <section class="hero">
     <div class="hero-content">
         <!-- Main Header -->
         <div class="header-group" in:fly={{ y: 50, duration: 500 }}>
             <h1 class="hero-title" use:borderAnimation>
-                <span class="gradient-text">Elevate Your Learning</span> with Smart Quizzes
+                <span class="gradient-text">Transform Learning</span> Through Smart Practice
             </h1>
             
             <div class="search-container" use:revealAnimation>
                 <Search class="search-icon" />
-                <input type="text" placeholder="Explore 1000+ quizzes across 50+ subjects..." class="search-input">
-                <button class="search-button">Go</button>
+                <input type="text" placeholder="Discover 1000+ quizzes across 50+ subjects..." class="search-input" />
+                <button class="search-button">Explore</button>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <span class="stat-number">250K+</span>
-                    <span class="stat-label">Active Learners</span>
+                    <span class="stat-number">500K+</span>
+                    <span class="stat-label">Daily Challenges</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">10K+</span>
-                    <span class="stat-label">Daily Quizzes</span>
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Success Rate</span>
                 </div>
             </div>
         </div>
 
-        <!-- Trending Quizzes Carousel -->
+        <!-- Trending Section -->
         <div class="carousel-section" in:fade>
-            <h2 class="section-title">Trending Now</h2>
+            <h2 class="section-title">Trending in Your Field</h2>
             <div class="carousel-container">
-                {#each [1,2,3] as item}
-                    <div class="quiz-card" use:hover3D transition:fly={{ y: 20 }}>
-                        <div class="quiz-thumbnail"></div>
-                        <h3>Modern JavaScript Basics</h3>
-                        <div class="quiz-meta">
-                            <span>🔥 1.2k attempts</span>
-                            <span>⭐ 4.8</span>
+                {#each trendingQuizzes as quiz}
+                    <div class="quiz-card" use:revealAnimation transition:fly={{ y: 20 }}>
+                        <div class="quiz-thumbnail">
+                            <div class="quiz-category">{quiz.category}</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>{quiz.title}</h3>
+                            <div class="quiz-meta">
+                                <span><Book /> {quiz.questions} Questions</span>
+                                <span> <AutoFlash /> {quiz.difficulty}</span>
+                            </div>
+                            <div class="quiz-stats">
+                                <span> <Clock /> {quiz.attempts} attempts</span>
+                                <button class="quiz-start">
+                                    Start Now <ArrowRight />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 {/each}
@@ -49,14 +106,14 @@
 
         <!-- Features Grid -->
         <div class="features-section">
-            <h2 class="section-title">Why Choose QuizMaster?</h2>
+            <h2 class="section-title">Why Learners Choose Us</h2>
             <div class="features-grid">
                 {#each [
-                    { icon: Book, title: 'Comprehensive Library', text: 'Updated daily with new questions' },
-                    { icon: AutoFlash, title: 'AI-Powered Analysis', text: 'Detailed performance insights' },
-                    { icon: Clock, title: 'Time Challenges', text: 'Beat the clock mode' },
-                    { icon: Clock, title: 'Community Ranks', text: 'Compete globally' },
-                    { icon: Book, title: 'Progress Tracking', text: 'Visualize your growth' }
+                    { icon: Book, title: 'Comprehensive Library', text: 'Daily updated questions across all subjects' },
+                    { icon: AutoFlash, title: 'AI Analysis', text: 'Detailed performance breakdowns' },
+                    { icon: Clock, title: 'Timed Drills', text: 'Simulate real exam conditions' },
+                    { icon: Book, title: 'Global Ranking', text: 'Compete with learners worldwide' },
+                    { icon: Clock, title: 'Progress Tracking', text: 'Visual learning journey mapping' }
                 ] as feature, i}
                     <div class="feature-card" in:fly={{ delay: i * 100 }}>
                         <feature.icon class="feature-icon" />
@@ -67,17 +124,19 @@
             </div>
         </div>
 
-        <!-- Testimonials Section -->
+        <!-- Testimonials -->
         <div class="testimonials-section">
-            <h2 class="section-title">What Learners Say</h2>
+            <h2 class="section-title">Success Stories</h2>
             <div class="testimonials-grid">
-                {#each [1,2,3] as item}
+                {#each testimonials as testimonial}
                     <div class="testimonial-card" transition:fly={{ y: 30 }}>
-                        <div class="user-avatar"></div>
-                        <p>"Improved my exam scores dramatically!"</p>
+                        <div class="user-avatar">
+                            <img src={testimonial.avatar} alt={testimonial.name} />
+                        </div>
+                        <p class="testimonial-text">"{testimonial.text}"</p>
                         <div class="user-info">
-                            <strong>Sarah Johnson</strong>
-                            <span>Computer Science Student</span>
+                            <strong>{testimonial.name}</strong>
+                            <span>{testimonial.role}</span>
                         </div>
                     </div>
                 {/each}
@@ -87,9 +146,27 @@
 </section>
 
 <style>
+    /* Base Styles */
+    :global(:root) {
+            --primary: #6366f1;
+            --secondary: #818cf8;
+            --accent: #f472b6;
+            --background: #0f172a;
+            --text-primary: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
     
+  .hero {
+        background: var(--background);
+        color: var(--text-primary);
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.6;
+    }
+
     .hero {
-        padding: 6rem 1rem 8rem;
+        padding: 6rem 1rem 10rem;
+        background: linear-gradient(135deg, var(--background) 0%, #1e293b 100%);
         position: relative;
         overflow: hidden;
     }
@@ -101,6 +178,7 @@
         z-index: 2;
     }
 
+    /* Header Group */
     .header-group {
         max-width: 800px;
         margin: 0 auto 4rem;
@@ -111,25 +189,35 @@
         font-size: 3.5rem;
         margin-bottom: 2rem;
         line-height: 1.1;
+        letter-spacing: -0.03em;
     }
 
     .gradient-text {
-        background: linear-gradient(45deg, var(--secondary-600), var(--primary-600));
+        background: linear-gradient(45deg, var(--secondary), var(--accent));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
 
+    /* Search Container */
     .search-container {
         max-width: 700px;
         margin: 3rem auto;
         display: flex;
         gap: 1rem;
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
         border-radius: 2rem;
         padding: 0.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--glass-border);
+        transition: transform 0.3s ease;
+    }
+
+    .search-icon {
+        width: 24px;
+        height: 24px;
+        margin-left: 1.5rem;
+        color: var(--secondary);
     }
 
     .search-input {
@@ -137,21 +225,31 @@
         background: transparent;
         border: none;
         padding: 1.5rem;
-        color: var(--text-100);
+        color: var(--text-primary);
         font-size: 1.1rem;
     }
 
+    .search-input::placeholder {
+        color: #94a3b8;
+    }
+
     .search-button {
-        background: var(--primary-600);
+        background: var(--primary);
         color: white;
         border: none;
         padding: 1rem 2.5rem;
         border-radius: 1.5rem;
         font-weight: 600;
         cursor: pointer;
-        transition: transform 0.2s ease;
+        transition: all 0.3s ease;
     }
 
+    .search-button:hover {
+        background: #4f46e5;
+        transform: scale(1.05);
+    }
+
+    /* Stats Grid */
     .stats-grid {
         display: flex;
         justify-content: center;
@@ -166,17 +264,22 @@
     .stat-number {
         font-size: 2.5rem;
         font-weight: 700;
-        background: linear-gradient(var(--secondary-600), var(--primary-600));
+        background: linear-gradient(var(--secondary), var(--primary));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
 
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
+    .stat-label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* Carousel Section */
+    .carousel-section {
+        margin: 6rem 0;
     }
 
     .carousel-container {
@@ -189,14 +292,53 @@
     }
 
     .quiz-card {
-        min-width: 300px;
-        background: rgba(255, 255, 255, 0.05);
+        min-width: 320px;
+        background: var(--glass-bg);
         border-radius: 1.5rem;
-        padding: 1.5rem;
+        overflow: hidden;
         scroll-snap-align: start;
         transition: all 0.3s ease;
+        border: 1px solid var(--glass-border);
     }
 
+    .quiz-thumbnail {
+        height: 180px;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        position: relative;
+        padding: 1rem;
+    }
+
+    .quiz-category {
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .quiz-content {
+        padding: 1.5rem;
+    }
+
+    .quiz-meta {
+        display: flex;
+        justify-content: space-between;
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin: 1rem 0;
+    }
+
+    .quiz-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+    }
+
+    /* Features Grid */
     .features-section {
         margin: 6rem 0;
     }
@@ -209,11 +351,12 @@
     }
 
     .feature-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--glass-bg);
         padding: 2.5rem;
         border-radius: 1.5rem;
         text-align: center;
         transition: all 0.3s ease;
+        border: 1px solid var(--glass-border);
     }
 
     .feature-card:hover {
@@ -225,7 +368,12 @@
         width: 60px;
         height: 60px;
         margin: 0 auto 1.5rem;
-        color: var(--secondary-600);
+        color: var(--secondary);
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+        margin: 8rem 0 4rem;
     }
 
     .testimonials-grid {
@@ -236,12 +384,40 @@
     }
 
     .testimonial-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--glass-bg);
         padding: 2rem;
         border-radius: 1.5rem;
         text-align: center;
+        border: 1px solid var(--glass-border);
     }
 
+    .user-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: -4rem auto 1.5rem;
+        border: 3px solid var(--primary);
+    }
+
+    .user-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial-text {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        min-height: 100px;
+    }
+
+    .user-info {
+        border-top: 1px solid var(--glass-border);
+        padding-top: 1rem;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
         .hero-title {
             font-size: 2.5rem;
@@ -251,10 +427,65 @@
             flex-direction: column;
             background: transparent;
             padding: 0;
+            gap: 1rem;
+        }
+
+        .search-icon {
+            margin-left: 0;
         }
 
         .search-button {
             width: 100%;
+            border-radius: 1rem;
         }
+
+        .stats-grid {
+            gap: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .features-grid,
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Utility Classes */
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+
+    .quiz-start {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .quiz-start:hover {
+        background: #4f46e5;
+        transform: scale(1.05);
     }
 </style>
