@@ -56,11 +56,7 @@
         <!-- Main Header -->
         <div class="header-group" in:fly={{ y: 50, duration: 500 }}>
             
-               
-            
-            
-
-            <div class="stats-grid">
+               <div class="stats-grid">
                 <div class="stat-item">
                     <span class="stat-number">500K+</span>
                     <span class="stat-label">Daily Challenges</span>
@@ -110,7 +106,7 @@
                     { icon: Book, title: 'Global Ranking', text: 'Compete with learners worldwide' },
                     { icon: Clock, title: 'Progress Tracking', text: 'Visual learning journey mapping' }
                 ] as feature, i}
-                    <div class="feature-card" in:fly={{ delay: i * 100 }}>
+                    <div class="feature-card" in:fly={{ delay: i * 100 }} use:revealAnimation>
                         <feature.icon class="feature-icon" />
                         <h3>{feature.title}</h3>
                         <p>{feature.text}</p>
@@ -124,7 +120,7 @@
             <h2 class="section-title">Success Stories</h2>
             <div class="testimonials-grid">
                 {#each testimonials as testimonial}
-                    <div class="testimonial-card" transition:fly={{ y: 30 }}>
+                    <div class="testimonial-card" transition:fly={{ y: 30 }} use:revealAnimation>
                         <div class="user-avatar">
                             <img src={testimonial.avatar} alt={testimonial.name} />
                         </div>
