@@ -85,7 +85,7 @@
 		display: grid;
 		grid-template-columns: 2fr 1fr;
 		width: 100%;
-		background-color: var(--brand-border-50);
+		background-color: var(--background-50);;
 		height: 64px;
 	}
 
