@@ -87,14 +87,7 @@
 </section>
 
 <style>
-    :global(body) {
-        --primary: #4f46e5;
-        --secondary: #818cf8;
-        --accent: #f472b6;
-        --background: #0f172a;
-        --text-primary: #f8fafc;
-    }
-
+    
     .hero {
         padding: 6rem 1rem 8rem;
         position: relative;
@@ -121,7 +114,7 @@
     }
 
     .gradient-text {
-        background: linear-gradient(45deg, var(--secondary), var(--accent));
+        background: linear-gradient(45deg, var(--secondary-600), var(--primary-600));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -144,12 +137,12 @@
         background: transparent;
         border: none;
         padding: 1.5rem;
-        color: var(--text-primary);
+        color: var(--text-100);
         font-size: 1.1rem;
     }
 
     .search-button {
-        background: var(--primary);
+        background: var(--primary-600);
         color: white;
         border: none;
         padding: 1rem 2.5rem;
@@ -173,7 +166,7 @@
     .stat-number {
         font-size: 2.5rem;
         font-weight: 700;
-        background: linear-gradient(var(--secondary), var(--primary));
+        background: linear-gradient(var(--secondary-600), var(--primary-600));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -232,7 +225,7 @@
         width: 60px;
         height: 60px;
         margin: 0 auto 1.5rem;
-        color: var(--secondary);
+        color: var(--secondary-600);
     }
 
     .testimonials-grid {
