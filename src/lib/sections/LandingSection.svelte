@@ -3,7 +3,7 @@ import { borderAnimation,decodeAnimation, revealAnimation } from '$lib/actions/a
 import { Book,
   Clock,
   Search,
-  AutoFlash } from '$lib/icons';
+  AutoFlash, ArrowRight } from '$lib/icons';
 </script>
 <section class="hero">
     <div class="hero-content">
@@ -29,7 +29,7 @@ import { Book,
                 <div class="quiz-badge">Quiz of the Day</div>
                 <h3>World History Challenge</h3>
                 <p>20 Questions | Medium Difficulty | 4.8★ Rating</p>
-                <button class="quiz-start">Take This Quiz →</button>
+                <button class="quiz-start">Take This Quiz <ArrowRight /> </button>
             </div>
         </div>
 
