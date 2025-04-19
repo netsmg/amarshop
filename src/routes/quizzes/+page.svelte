@@ -31,7 +31,6 @@
 </script>
 
 
-
 <svelte:head>
     <title>Quizzes | Mcq Store</title>
 </svelte:head>
@@ -75,11 +74,20 @@
 </article>
 
 <style>
-    /* Updated Styles */
+    :global(:root) {
+        --primary: #4f46e5;
+        --accent: #ec4899;
+        --background: #ffffff;
+        --text-primary: #1e293b;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+    }
+
     .quiz-section {
         padding: 2rem 1rem;
         max-width: 1500px;
         margin: 0 auto;
+        background: var(--background);
     }
 
     .quiz-grid {
@@ -90,37 +98,37 @@
     }
 
     .quiz-card {
-        background: var(--glass-bg);
-        border-radius: 1.5rem;
-        border: 1px solid var(--glass-border);
+        background: var(--card-bg);
+        border-radius: 1rem;
+        border: 1px solid var(--border-color);
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        backdrop-filter: blur(12px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .quiz-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
     .quiz-thumbnail {
-        height: 200px;
+        height: 180px;
         background: linear-gradient(45deg, var(--primary), var(--accent));
         position: relative;
         padding: 1rem;
     }
 
     .quiz-category {
-        background: rgba(0, 0, 0, 0.3);
-        color: white;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--primary);
         padding: 0.5rem 1.25rem;
         border-radius: 2rem;
         position: absolute;
         top: 1rem;
         right: 1rem;
         font-size: 0.85rem;
-        font-weight: 500;
-        backdrop-filter: blur(5px);
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .quiz-content {
@@ -128,16 +136,17 @@
     }
 
     .quiz-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin: 0 0 1rem;
-        line-height: 1.3;
-        min-height: 3.5rem;
+        color: var(--text-primary);
+        line-height: 1.4;
     }
 
     .quiz-meta {
         display: flex;
         gap: 1rem;
         margin-bottom: 1.5rem;
+        flex-wrap: wrap;
     }
 
     .meta-item {
@@ -145,12 +154,16 @@
         align-items: center;
         gap: 0.5rem;
         font-size: 0.9rem;
-        color: #94a3b8;
+        color: #64748b;
+        background: #f8fafc;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
     }
 
     .meta-icon {
-        width: 1.1rem;
-        height: 1.1rem;
+        width: 1rem;
+        height: 1rem;
+        color: #94a3b8;
     }
 
     .quiz-stats {
@@ -158,7 +171,7 @@
         justify-content: space-between;
         align-items: center;
         padding-top: 1rem;
-        border-top: 1px solid var(--glass-border);
+        border-top: 1px solid var(--border-color);
     }
 
     .stat-item {
@@ -166,7 +179,7 @@
         align-items: center;
         gap: 0.5rem;
         font-size: 0.9rem;
-        color: #94a3b8;
+        color: #64748b;
     }
 
     .quiz-start {
@@ -180,12 +193,13 @@
         gap: 0.5rem;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-weight: 500;
+        font-weight: 600;
     }
 
     .quiz-start:hover {
-        background: #4f46e5;
-        transform: translateX(3px);
+        background: #4338ca;
+        transform: translateY(-1px);
+        box-shadow: 0 3px 12px rgba(79, 70, 229, 0.2);
     }
 
     .arrow-icon {
@@ -193,7 +207,7 @@
     }
 
     .quiz-start:hover .arrow-icon {
-        transform: translateX(2px);
+        transform: translateX(3px);
     }
 
     @media (max-width: 768px) {
@@ -207,18 +221,11 @@
         }
 
         .quiz-title {
-            font-size: 1.3rem;
-            min-height: auto;
+            font-size: 1.2rem;
         }
 
-        .quiz-meta {
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .quiz-start {
-            width: 100%;
-            justify-content: center;
+        .meta-item {
+            padding: 0.5rem 0.75rem;
         }
     }
 
@@ -232,12 +239,7 @@
         }
 
         .quiz-start {
-            padding: 0.75rem;
+            padding: 0.75rem 1rem;
         }
     }
 </style>
-
-
-
-
-    
