@@ -1,13 +1,12 @@
 <script>
     import { borderAnimation } from '$lib/actions/animation';
-    import { ArrowLeft, ArrowRight, Checkmark, Cross } from '$lib/icons';
+    import { Checkmark, Cross } from '$lib/icons';
     
-    let currentQuestion = 0;
-    let selectedAnswers = [];
+    let selectedAnswers = Array(mcqs.length).fill(undefined);
     let score = 0;
     let submitted = false;
 
-const mcqs = [
+    const mcqs = [
     {
         question: "What is the capital of France?",
         options: ["London", "Berlin", "Paris", "Madrid"],
@@ -36,146 +35,80 @@ const mcqs = [
         ],
         correct: 2,
         explanation: "HTML stands for Hyper Text Markup Language."
-    },
-    {
-        question: "Which of the following is a NoSQL database?",
-        options: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"],
-        correct: 2,
-        explanation: "MongoDB is a popular NoSQL database."
-    },
-    {
-        question: "Which HTTP method is used to update a resource?",
-        options: ["GET", "POST", "PUT", "DELETE"],
-        correct: 2,
-        explanation: "PUT is used to update an existing resource."
-    },
-    {
-        question: "What is the default port for HTTP?",
-        options: ["21", "80", "443", "3306"],
-        correct: 1,
-        explanation: "Port 80 is the default for HTTP."
-    },
-    {
-        question: "Which of the following is a JavaScript framework?",
-        options: ["Django", "Laravel", "Vue.js", "Flask"],
-        correct: 2,
-        explanation: "Vue.js is a progressive JavaScript framework."
-    },
-    {
-        question: "What does CSS stand for?",
-        options: [
-            "Cascading Style Sheets",
-            "Creative Style System",
-            "Computer Style Syntax",
-            "Colorful Style Sheets"
-        ],
-        correct: 0,
-        explanation: "CSS stands for Cascading Style Sheets."
-    },
-    {
-        question: "What does API stand for?",
-        options: [
-            "Application Programming Interface",
-            "Advanced Programming Integration",
-            "Application Processing Interface",
-            "Applied Program Internet"
-        ],
-        correct: 0,
-        explanation: "API stands for Application Programming Interface."
     }
-];
-    
-
-    const handleNext = () => {
-        if (currentQuestion < mcqs.length - 1) {
-            currentQuestion++;
-        }
-    };
-
-    const handlePrevious = () => {
-        if (currentQuestion > 0) {
-            currentQuestion--;
-        }
-    };
-
+    ];
     const handleSubmit = () => {
         submitted = true;
         score = mcqs.reduce((acc, question, idx) => 
             acc + (selectedAnswers[idx] === question.correct ? 1 : 0), 0);
     };
 
-    const handleOptionSelect = (index) => {
-        selectedAnswers[currentQuestion] = index;
+    const handleOptionSelect = (questionIndex, optionIndex) => {
+        selectedAnswers[questionIndex] = optionIndex;
+        selectedAnswers = selectedAnswers; // trigger update
     };
 </script>
 
 <section class="mcq-container">
     {#if !submitted}
-        <div class="progress-bar">
-            <div 
-                class="progress-fill" 
-                style={`width: ${(currentQuestion + 1) / mcqs.length * 100}%`}
-            ></div>
+        <div class="header">
+            <h1>Tech Knowledge Quiz</h1>
+            <div class="progress-indicator">
+                Answered {selectedAnswers.filter(a => a !== undefined).length}/{mcqs.length}
+            </div>
         </div>
 
-        <div class="question-card">
-            <h2>{mcqs[currentQuestion].question}</h2>
-            
-            <div class="options-container">
-                {#each mcqs[currentQuestion].options as option, index (index)}
-                    <label
-                        class="option {selectedAnswers[currentQuestion] === index ? 'selected' : ''}"
-                        use:borderAnimation
-                    >
-                        <input
-                            type="radio"
-                            name="mcq-option"
-                            value={index}
-                            checked={selectedAnswers[currentQuestion] === index}
-                            on:change={() => handleOptionSelect(index)}
-                        />
-                        <span class="option-text">{option}</span>
-                    </label>
-                {/each}
-            </div>
-
-            <div class="navigation-controls">
-                <button
-                    class="btn {currentQuestion === 0 ? 'disabled' : ''}"
-                    on:click={handlePrevious}
-                    disabled={currentQuestion === 0}
-                >
-                    <ArrowLeft />
-                    <span class="btn-text">Previous</span>
-                </button>
-
-                <div class="progress-text">
-                    Question {currentQuestion + 1} of {mcqs.length}
+        <div class="questions-grid">
+            {#each mcqs as question, questionIndex (questionIndex)}
+                <div class="question-card">
+                    <div class="question-header">
+                        <h3>Question {questionIndex + 1}</h3>
+                        {#if selectedAnswers[questionIndex] !== undefined}
+                            <span class="status-dot completed"></span>
+                        {:else}
+                            <span class="status-dot"></span>
+                        {/if}
+                    </div>
+                    
+                    <p class="question-text">{question.question}</p>
+                    
+                    <div class="options-grid">
+                        {#each question.options as option, optionIndex (optionIndex)}
+                            <label
+                                class="option {selectedAnswers[questionIndex] === optionIndex ? 'selected' : ''}"
+                                use:borderAnimation
+                            >
+                                <input
+                                    type="radio"
+                                    name="mcq-option-{questionIndex}"
+                                    value={optionIndex}
+                                    checked={selectedAnswers[questionIndex] === optionIndex}
+                                    on:change={() => handleOptionSelect(questionIndex, optionIndex)}
+                                />
+                                <span class="option-content">
+                                    <span class="option-letter">
+                                        {String.fromCharCode(65 + optionIndex)}
+                                    </span>
+                                    <span class="option-text">{option}</span>
+                                </span>
+                            </label>
+                        {/each}
+                    </div>
                 </div>
+            {/each}
+        </div>
 
-                {#if currentQuestion === mcqs.length - 1}
-                    <button 
-                        class="btn submit-btn {selectedAnswers[currentQuestion] === undefined ? 'disabled' : ''}"
-                        on:click={handleSubmit}
-                        disabled={selectedAnswers[currentQuestion] === undefined}
-                    >
-                        <span class="btn-text">Submit</span>
-                        <ArrowRight />
-                    </button>
-                {:else}
-                    <button 
-                        class="btn {selectedAnswers[currentQuestion] === undefined ? 'disabled' : ''}"
-                        on:click={handleNext}
-                        disabled={selectedAnswers[currentQuestion] === undefined}
-                    >
-                        <span class="btn-text">Next</span>
-                        <ArrowRight />
-                    </button>
-                {/if}
-            </div>
+        <div class="footer-controls">
+            <button
+                class="submit-btn"
+                on:click={handleSubmit}
+                disabled={selectedAnswers.some(a => a === undefined)}
+            >
+                Submit Answers
+            </button>
         </div>
     {:else}
-        <div class="results">
+    <div class="results">
             <div class="score-card">
                 <div class="score-circle">
                     <svg viewBox="0 0 100 100">
@@ -194,7 +127,6 @@ const mcqs = [
                 </div>
                 <h2>Quiz Completed!</h2>
             </div>
-
             <div class="results-breakdown">
                 {#each mcqs as question, index}
                     <div class="result-item {selectedAnswers[index] === question.correct ? 'correct' : 'incorrect'}">
@@ -227,50 +159,107 @@ const mcqs = [
             </button>
         </div>
     {/if}
+        <!-- Results section remains similar with updated styling -->
 </section>
 
-
-
-
 <style>
- .mcq-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: var(--space-l);
+    :global(body) {
+        background: var(--background-100);
     }
 
-    .progress {
-        text-align: right;
-        color: var(--primary-500);
-        margin-bottom: var(--space-s);
+    .mcq-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: var(--text-100);
+        margin-bottom: 1rem;
+    }
+
+    .progress-indicator {
+        font-size: 1.1rem;
+        color: var(--text-300);
+        padding: 0.5rem 1rem;
+        background: var(--background-200);
+        border-radius: 2rem;
+        display: inline-block;
+    }
+
+    .questions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
     }
 
     .question-card {
-        background: var(--background-100);
-        padding: var(--space-l);
-        border-radius: 8px;
+        background: var(--background-200);
+        padding: 1.5rem;
+        border-radius: 12px;
         box-shadow: var(--shadow-md);
+        transition: transform 0.2s ease;
     }
 
-    .options-container {
+    .question-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .question-header h3 {
+        font-size: 1.1rem;
+        color: var(--text-200);
+    }
+
+    .status-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--background-300);
+    }
+
+    .status-dot.completed {
+        background: var(--primary-500);
+        box-shadow: 0 0 8px rgba(var(--primary-500-rgb), 0.3);
+    }
+
+    .question-text {
+        font-size: 1.2rem;
+        color: var(--text-100);
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+    }
+
+    .options-grid {
         display: grid;
-        gap: var(--space-s);
-        margin: var(--space-m) 0;
+        gap: 0.75rem;
     }
 
     .option {
-        display: flex;
-        align-items: center;
-        padding: var(--space-s);
-        border-radius: 4px;
+        display: block;
+        padding: 1rem;
+        border-radius: 8px;
+        background: var(--background-300);
         cursor: pointer;
         transition: all 0.2s ease;
-        border: 2px solid var(--background-300);
+        border: 2px solid transparent;
     }
 
     .option:hover {
-        background: var(--background-200);
-        transform: translateY(-2px);
+        background: var(--background-350);
     }
 
     .option.selected {
@@ -279,37 +268,38 @@ const mcqs = [
     }
 
     .option input {
-        margin-right: var(--space-s);
+        opacity: 0;
+        position: absolute;
     }
 
-    .navigation-controls {
+    .option-content {
         display: flex;
-        justify-content: space-between;
-        margin-top: var(--space-l);
+        align-items: center;
+        gap: 1rem;
     }
 
-    .results {
-        background: var(--background-100);
-        padding: var(--space-l);
-        border-radius: 8px;
+    .option-letter {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--background-400);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: var(--text-300);
     }
 
-    .result-item {
-        margin: var(--space-l) 0;
-        padding: var(--space-s);
-        border-left: 4px solid var(--primary-500);
+    .option.selected .option-letter {
+        background: var(--primary-500);
+        color: white;
     }
 
-    .correct-answer {
-        color: var(--success-500);
-        font-weight: bold;
+    .footer-controls {
+        text-align: center;
+        margin-top: 3rem;
     }
-
-    .user-answer {
-        color: var(--error-500);
-    }
-
-    .explanation {
+   .explanation {
         color: var(--text-300);
         font-size: var(--step--1);
     }
@@ -336,14 +326,33 @@ const mcqs = [
         margin-bottom: var(--space-l);
         overflow: hidden;
     }
-
-    .progress-fill {
-        height: 100%;
-        background: var(--primary-500);
-        transition: width 0.3s ease;
+   .navigation-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: var(--space-l);
     }
 
-    .score-card {
+    .results {
+        background: var(--background-100);
+        padding: var(--space-l);
+        border-radius: 8px;
+    }
+
+    .result-item {
+        margin: var(--space-l) 0;
+        padding: var(--space-s);
+        border-left: 4px solid var(--primary-500);
+    }
+
+    .correct-answer {
+        color: var(--success-500);
+        font-weight: bold;
+    }
+
+    .user-answer {
+        color: var(--error-500);
+    }
+   .score-card {
         text-align: center;
         margin-bottom: var(--space-xl);
     }
@@ -375,8 +384,7 @@ const mcqs = [
         transform-origin: center;
         transition: stroke-dasharray 0.8s ease;
     }
-
-    .score-text {
+   .score-text {
         font-size: 24px;
         font-weight: bold;
         dominant-baseline: middle;
@@ -409,68 +417,57 @@ const mcqs = [
         justify-content: center;
     }
 
-    .icon-check {
-        color: var(--success-500);
-        width: 24px;
-        height: 24px;
+
+    .submit-btn {
+        background: var(--primary-500);
+        color: white;
+        padding: 1rem 3rem;
+        border-radius: 2rem;
+        font-size: 1.1rem;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
     }
 
-    .icon-cross {
-        color: var(--error-500);
-        width: 24px;
-        height: 24px;
+    .submit-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(var(--primary-500-rgb), 0.3);
     }
+
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Updated results styling */
+    .results {
+        background: var(--background-200);
+        padding: 2rem;
+        border-radius: 12px;
+    }
+
+    .score-card {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .score-circle {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem;
+    }
+
+    /* ... rest of results styling remains similar ... */
 
     @media (max-width: 768px) {
-        .mcq-container {
-            padding: var(--space-s);
+        .questions-grid {
+            grid-template-columns: 1fr;
         }
-
+        
         .question-card {
-            padding: var(--space-m);
-        }
-
-        .navigation-controls {
-            flex-direction: column;
-            gap: var(--space-s);
-        }
-
-        .progress-text {
-            text-align: center;
-            order: -1;
-        }
-
-        .result-item {
-            flex-direction: column;
-            gap: var(--space-s);
-        }
-
-        .result-status {
-            width: 100%;
-            justify-content: flex-start;
-        }
-
-        .score-circle {
-            width: 120px;
-            height: 120px;
-        }
-
-        .score-text {
-            font-size: 20px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .option {
-            padding: var(--space-s) var(--space-xs);
-        }
-
-        .btn-text {
-            display: none;
-        }
-
-        .progress-text {
-            font-size: var(--step--1);
+            padding: 1rem;
         }
     }
 </style>
