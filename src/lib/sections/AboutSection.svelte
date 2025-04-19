@@ -40,7 +40,7 @@ import { Book, ArrowRight } from '$lib/icons';
     <div class="stats-grid">
         {#each stats as item, i}
             <div class="stat-card" transition:fly={{ y: 20, delay: i * 100 }}>
-                <item.icon class="stat-icon" />
+               <center> <item.icon class="stat-icon" /> </center>
                 <div class="stat-value">{item.value}</div>
                 <div class="stat-label">{item.label}</div>
             </div>
@@ -50,7 +50,7 @@ import { Book, ArrowRight } from '$lib/icons';
     <!-- Mission Section -->
     <section class="mission-section">
         <div class="mission-content" use:revealAnimation>
-            <Book class="section-icon" />
+           <center> <Book class="section-icon" /> </center>
             <h2 class="section-title">Our Core Mission</h2>
             <p class="section-text">
                 To empower learners worldwide through accessible, engaging, and 
@@ -77,7 +77,7 @@ import { Book, ArrowRight } from '$lib/icons';
 
     <!-- CTA Section -->
     <div class="cta-section" use:revealAnimation>
-        <Book class="cta-icon" />
+        <center><Book class="cta-icon" /></center>
         <h2 class="cta-title">Join Our Learning Community</h2>
         <p class="cta-text">Start your learning journey today with access to thousands of resources</p>
         <button class="cta-button">
