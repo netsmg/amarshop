@@ -1,7 +1,7 @@
 <script>
     import PageTitle from '$lib/components/PageTitle.svelte';
     import { revealAnimation } from '$lib/actions/animation';
-import { Book, ArrowRight } from '$lib/icons';
+    import { Book, Clock, AutoFlash } from '$lib/icons';
     import { fly } from 'svelte/transition';
 
     const team = [
@@ -12,8 +12,8 @@ import { Book, ArrowRight } from '$lib/icons';
 
     const stats = [
       { value: "50K+", label: "Active Users", icon: Book },
-        { value: "100K+", label: "Questions Available", icon: Book },
-      { value: "95%", label: "Satisfaction Rate", icon: Book }
+        { value: "100K+", label: "Questions Available", icon: Clock },
+      { value: "95%", label: "Satisfaction Rate", icon: AutoFlash }
     ];
 </script>
 
@@ -81,7 +81,9 @@ import { Book, ArrowRight } from '$lib/icons';
         <h2 class="cta-title">Join Our Learning Community</h2>
         <p class="cta-text">Start your learning journey today with access to thousands of resources</p>
         <button class="cta-button">
-            Get Started <ArrowRight />
+            Get Started <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
         </button>
     </div>
 </section>
