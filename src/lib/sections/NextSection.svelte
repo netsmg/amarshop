@@ -8,13 +8,13 @@
             name: "Sarah Johnson",
             role: "Med Student",
             text: "Boosted my exam scores by 40%! The interactive quizzes are game-changers.",
-            avatar: "/avatars/testimonial-01.jpg"
+            avatar: "/avatars/testimonial-02.jpg"
         },
         {
             name: "Mike Chen",
             role: "Developer",
             text: "Best way to keep skills sharp. Love the instant explanations!",
-            avatar: "/avatars/testimonial-02.jpg"
+            avatar: "/avatars/testimonial-01.jpg"
         },
         {
             name: "Emma Wilson",
