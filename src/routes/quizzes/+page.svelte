@@ -11,21 +11,24 @@
             category: "Programming",
             questions: 25,
             difficulty: "Advanced",
-            attempts: "1.2K"
+            attempts: "1.2K",
+            link:"quizzes/javascript-master"
         },
         {
             title: "Human Anatomy",
             category: "Biology",
             questions: 30,
             difficulty: "Intermediate",
-            attempts: "890"
+            attempts: "890",
+            link:"quizzes/javascript-master"
         },
         {
             title: "World Capitals",
             category: "Geography",
             questions: 50,
             difficulty: "Easy",
-            attempts: "2.4K"
+            attempts: "2.4K",
+            link:"quizzes/javascript-master"
         }
     ];
 </script>
@@ -40,6 +43,7 @@
 <article class="quiz-section">
     <div class="quiz-grid">
         {#each trendingQuizzes as quiz}
+<a href={quiz.link}>
             <div class="quiz-card" 
                  use:revealAnimation 
                  transition:fly={{ y: 20, duration: 300 }}>
@@ -69,6 +73,7 @@
                     </div>
                 </div>
             </div>
+</a>
         {/each}
     </div>
 </article>
