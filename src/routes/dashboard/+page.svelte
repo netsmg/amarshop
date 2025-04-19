@@ -1,19 +1,17 @@
 <script>
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import McqForm from '$lib/sections/McqForm.svelte';
+	import McqForm from '$lib/sections/DashboardSection.svelte';
 </script>
 
 <svelte:head>
-	<title>Auth | Amar Shop</title>
+	<title>Dashboard | Mcq store</title>
 	<meta name="description" content="Login or Register" />
 </svelte:head>
 
 <PageTitle pageTitle="Dashboard" />
 
 <section class="contact">
-	<div class="contact__title">
-		<p>Start practicing mcq.</p>
-	</div>
+	
 	<McqForm />
 </section>
 
