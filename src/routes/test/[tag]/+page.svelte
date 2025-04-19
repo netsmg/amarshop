@@ -1,5 +1,4 @@
 
-
 <svelte:head>
     <title>{examDetails?.examName || 'Exam'} | Amar Shop</title>
 </svelte:head>
@@ -91,7 +90,13 @@
             <div class="questions-container">
                 {#each questions as question (question.id)}
                     <McqCard
-                        {question}
+                         
+question={question.question}
+				questionNumber={question.questionNumber}
+				questionTag={question.questionTag}
+				options={question.options}
+				correctAnswer={question.correctAnswer}
+				explanation={question.explanation}
                         selectedAnswer={userAnswers[question.id]}
                         on:select={(e) => userAnswers[question.id] = e.detail}
                     />
