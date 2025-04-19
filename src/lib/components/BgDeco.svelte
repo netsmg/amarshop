@@ -25,7 +25,7 @@
 		height: 100%;
 		background-size: 40px;
 		background-repeat: repeat;
-		background-image: url(/images/noise.png);
+		background-image: url(/images/still-36fba2184c9763f94099abd4fc909c85.webp);
 		opacity: 0.06;
 
 		position: fixed;
