@@ -1,6 +1,7 @@
 <script>
+    import PageTitle from '$lib/components/PageTitle.svelte';
     import { borderAnimation, decodeAnimation, revealAnimation } from '$lib/actions/animation';
-    import { Book, AutoFlash, Clock, ArrowRight Cross } from '$lib/icons';
+    import { Book, AutoFlash, Clock, ArrowRight, Cross } from '$lib/icons';
     import { fly } from 'svelte/transition';
 
     
@@ -117,7 +118,8 @@
 
 <svelte:head>
     <title>Quizzes | Mcq Store</title>
-    </svelte:head>
+    </svelte:head> 
+<PageTitle pageTitle="Quizzes" />
 {#each trendingQuizzes as quiz}
                     <div class="quiz-card" use:revealAnimation transition:fly={{ y: 20 }}>
                         <div class="quiz-thumbnail">
