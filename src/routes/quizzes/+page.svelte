@@ -61,8 +61,24 @@
         transition: all 0.3s ease;
         border: 1px solid var(--glass-border);
         padding: 15px;
+        margin: 1rem;
     }
 
+
+  
+
+
+@media (min-width: 640px) {
+  .quize-card {
+    margin: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .quize-card {
+    margin: 2rem;
+  }
+}
     .quiz-thumbnail {
         height: 180px;
         background: linear-gradient(45deg, var(--primary), var(--accent));
