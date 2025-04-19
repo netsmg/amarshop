@@ -3,7 +3,7 @@ import { borderAnimation,decodeAnimation, revealAnimation } from '$lib/actions/a
 import { Book,
   Clock,
   Search,
-  AutoFlash, ArrowRight } from '$lib/icons';
+  AutoFlash } from '$lib/icons';
 </script>
 <section class="hero">
     <div class="hero-content">
@@ -29,7 +29,7 @@ import { Book,
                 <div class="quiz-badge">Quiz of the Day</div>
                 <h3>World History Challenge</h3>
                 <p>20 Questions | Medium Difficulty | 4.8★ Rating</p>
-                <button class="quiz-start">Take This Quiz <ArrowRight /> </button>
+               
             </div>
         </div>
 
@@ -46,14 +46,10 @@ import { Book,
                 <p>Detailed explanations with every answer</p>
             </div>
             
-            <div class="feature-card" use:revealAnimation>
-                <div class="feature-icon"> <Clock /> </div>
-                <h4>Mobile-Friendly</h4>
-                <p>Seamless experience on any device</p>
-            </div>
+           
             
             <div class="feature-card" use:revealAnimation>
-                <div class="feature-icon">🎯</div>
+                <div class="feature-icon"> <Clock /></div>
                 <h4>Free & Unlimited</h4>
                 <p>Complete access with zero restrictions</p>
             </div>
@@ -238,26 +234,5 @@ import { Book,
         padding: 1.5rem;
     }
 }
-.quiz-start {
-    background-color: #4f46e5; /* Indigo-600 */
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
-.quiz-start:hover {
-    background-color: #4338ca; /* Indigo-700 */
-    transform: scale(1.03);
-}
-
-.quiz-start:active {
-    background-color: #3730a3; /* Indigo-800 */
-    transform: scale(0.98);
-}
 </style>
