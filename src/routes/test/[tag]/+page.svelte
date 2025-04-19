@@ -10,12 +10,16 @@
 <section class="exam-container">
     {#if loading}
         <div class="loading-state">
-            <div class="spinner"></div>
+            <svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
             <p>Loading exam...</p>
         </div>
     {:else if error}
         <div class="error-state">
-            <div class="error-icon">⚠️</div>
+            <svg class="error-icon" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"/>
+            </svg>
             <h3>Error loading exam</h3>
             <p>{error}</p>
         </div>
@@ -61,16 +65,23 @@
                 <p class="score-text">You scored {score} out of {questions.length}</p>
                 {#if isSubmitting}
                     <div class="submission-loading">
-                        <div class="spinner small"></div>
+                         <svg class="spinner small" viewBox="0 0 50 50">
+                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                        </svg>
                         <p>Saving results...</p>
                     </div>
                 {:else if submitError}
                     <div class="submission-error">
-                        ⚠️ Error saving results: {submitError}
+<svg class="icon" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"/>
+                        </svg>
+                         Error saving results: {submitError}
                     </div>
                 {:else}
                     <div class="submission-success">
-                        ✔️ Results saved successfully!
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg> Results saved successfully!
                     </div>
                 {/if}
             </div>
@@ -80,7 +91,9 @@
         <div class="exam-interface">
             <div class="exam-header">
                 <div class="timer {timeLeft <= 300 ? 'warning' : ''}">
-                    ⏳ {formatTime(timeLeft)}
+                    <svg class="icon-timer" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m.5-13H11v6l5.2 3.2l.8-1.3l-4.5-2.7V7z"/>
+                    </svg> {formatTime(timeLeft)}
                 </div>
                 <button class="submit-button" on:click={handleSubmit} disabled={isSubmitting}>
                     {isSubmitting ? 'Submitting...' : 'Submit Exam'}
@@ -102,6 +115,19 @@ question={question.question}
                     />
                 {/each}
             </div>
+<button class="submit-button" on:click={handleSubmit} disabled={isSubmitting}>
+                {#if isSubmitting}
+                    <svg class="spinner small" viewBox="0 0 50 50">
+                        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                    </svg>
+                    Submitting...
+                {:else}
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M10.5 17.5L19 9l-1.41-1.42L10.5 14.67l-4.09-4.08L5 12l5.5 5.5zM12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8z"/>
+                    </svg>
+                    Submit Exam
+                {/if}
+            </button>
         </div>
     {/if}
 </section>
