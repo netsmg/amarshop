@@ -58,15 +58,15 @@
 			'auth/invalid-email': 'Invalid email address',
 			'auth/weak-password': 'Password must be at least 6 characters',
 			'auth/user-not-found': 'No account found with this email',
-			'auth/wrong-password': 'Incorrect password',
+			'auth/invalid-credential': 'Incorrect password or email',
 			'auth/too-many-requests': 'Too many attempts. Please try again later',
 			'auth/network-request-failed': 'Network error. Please check your connection',
 			'auth/operation-not-allowed': 'Authentication method not enabled',
 			'auth/user-disabled': 'This account has been disabled'
 		};
 
-		errorMessage = errorMessages[error.code] || 'Something went wrong. Please try again.';
-		console.error('Firebase Auth Error:', error);
+		errorMessage = errorMessages[error.code] || 'Something went wrong. Please try again..';
+		
 	};
 </script>
 
