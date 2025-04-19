@@ -118,25 +118,51 @@ export function decodeAnimation(
 	};
 }
 
-// Reveal Animation: Fade and slide up effect
-export function revealAnimation(node: HTMLElement) {
-	// Animate from these values to element's natural position
+type Direction = 'left' | 'right' | 'top' | 'bottom';
+
+export function revealAnimation(
+	node: HTMLElement,
+	params?: Direction // Optional param
+) {
+	// Default to 'bottom' if no param is passed
+	const direction = params || 'bottom';
+
+	let x = 0;
+	let y = 0;
+
+	switch (direction) {
+		case 'left':
+			x = -50;
+			break;
+		case 'right':
+			x = 50;
+			break;
+		case 'top':
+			y = -50;
+			break;
+		case 'bottom':
+		default:
+			y = 50;
+			break;
+	}
+
 	gsap.from(node, {
-		opacity: 0, // Start fully transparent
-		y: 50, // Start 50px below final position
+		opacity: 0,
+		x,
+		y,
 		duration: 1,
-		ease: 'power2.out', // Smooth easing function
+		ease: 'power2.out',
 		scrollTrigger: {
 			trigger: node,
-			start: 'top 80%', // Start when element's top hits 80% of viewport
-			toggleActions: 'play none none none' // Play once when triggered
+			start: 'top 80%',
+			toggleActions: 'play none none none'
 		}
 	});
 
-	// Cleanup function
 	return {
 		destroy() {
 			ScrollTrigger.getById(node)?.kill();
 		}
 	};
 }
+
