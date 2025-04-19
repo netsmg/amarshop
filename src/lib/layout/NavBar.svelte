@@ -38,7 +38,8 @@
 		<div use:borderAnimation class="nav__mid">NetSMG</div>
 		<div use:borderAnimation class="nav__right">
 			<a class="nav__link" class:active={currentPath === '/'} href="/">Home</a>
-			<a class="nav__link" class:active={currentPath === '/exams'} href="/exams">Quizzes</a>
+ <a class="nav__link" class:active={currentPath === '/auth'} href="/">Auth</a>
+<a class="nav__link" class:active={currentPath === '/exams'} href="/exams">Quizzes</a>
 			<a class="nav__link" class:active={currentPath === '/about'} href="/about">About</a>
 			<a class="nav__link" class:active={currentPath === '/contact'} href="/contact">Contact</a>
 
@@ -56,11 +57,17 @@
 <div class="fullscreen-menu" class:show={menuVisible}>
 	<a onclick={toggleMenu} class="nav__link--mobile" class:active={currentPath === '/'} href="/"
 		>Home</a>
+<a
+		onclick={toggleMenu}
+		class="nav__link--mobile"
+		class:active={currentPath === '/exams'}
+		href="/auth">Auth</a>
 	<a
 		onclick={toggleMenu}
 		class="nav__link--mobile"
 		class:active={currentPath === '/exams'}
 		href="/exams">Quizzes</a>
+
 	<a
 		onclick={toggleMenu}
 		class="nav__link--mobile"
