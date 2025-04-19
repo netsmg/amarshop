@@ -388,6 +388,43 @@ question={question.question}
             text-align: center;
         }
     }
+ /* Add SVG spinner styles */
+    .spinner {
+        animation: rotate 2s linear infinite;
+        width: 24px;
+        height: 24px;
+    }
+    .spinner.small {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+    .spinner .path {
+        stroke: currentColor;
+        stroke-linecap: round;
+        animation: dash 1.5s ease-in-out infinite;
+    }
+    @keyframes rotate {
+        100% { transform: rotate(360deg); }
+    }
+    @keyframes dash {
+        0% { stroke-dasharray: 1,150; stroke-dashoffset: 0; }
+        50% { stroke-dasharray: 90,150; stroke-dashoffset: -35; }
+        100% { stroke-dasharray: 90,150; stroke-dashoffset: -124; }
+    }
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+    .icon-timer {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+    /* Rest of the styles remain unchanged */
 </style>
 
 
