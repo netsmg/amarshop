@@ -113,7 +113,7 @@ link: "/quizzes/world-capitals"
                     { icon: Clock, title: 'Progress Tracking', text: 'Visual learning journey mapping' }
                 ] as feature, i}
                     <div class="feature-card" in:fly={{ delay: i * 100 }} use:revealAnimation>
-                        <feature.icon class="feature-icon" />
+                       <center> <feature.icon class="feature-icon" /> </center>
                         <h3>{feature.title}</h3>
                         <p>{feature.text}</p>
                     </div>
