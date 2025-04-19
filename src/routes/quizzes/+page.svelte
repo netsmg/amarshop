@@ -5,7 +5,15 @@
     import { fly } from 'svelte/transition';
 
     
-    let trendingQuizzes = [
+    let trendingQuizzes = [ 
+        {
+            title: "Newtonian Mechanics",
+            category: "Physics",
+            questions: 25,
+            difficulty: "Easy",
+            attempts: "1.9K",
+            link:"quizzes/newtonian-mechanics"
+        },
         {
             title: "JavaScript Mastery",
             category: "Programming",
