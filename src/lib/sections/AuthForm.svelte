@@ -1,9 +1,13 @@
-
 <script>
+	import { onMount } from 'svelte';
 	import { borderAnimation } from '$lib/actions/animation';
 	import { SendDiagonal } from '$lib/icons';
 	import { auth } from '$lib/firebase';
-	import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+	import {
+		createUserWithEmailAndPassword,
+		signInWithEmailAndPassword,
+		onAuthStateChanged
+	} from 'firebase/auth';
 	import { goto } from '$app/navigation';
 
 	let email = '';
@@ -15,7 +19,17 @@
 
 	const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
 
+	// Redirect if already logged in
+	onMount(() => {
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				goto('/dashboard');
+			}
+		});
+	});
+
 	const validateForm = () => {
+		errorMessage = '';
 		if (!email || !password) {
 			errorMessage = 'Please fill in all fields';
 			return false;
@@ -56,7 +70,8 @@
 		const errorMessages = {
 			'auth/email-already-in-use': 'Email already in use',
 			'auth/invalid-email': 'Invalid email address',
-			'auth/password-does-not-meet-requirements': 'Password must be at least 6 characters, number, capital letter and one special character.',
+			'auth/password-does-not-meet-requirements':
+				'Password must be at least 6 characters, number, capital letter and one special character.',
 			'auth/user-not-found': 'No account found with this email',
 			'auth/invalid-credential': 'Incorrect password or email',
 			'auth/too-many-requests': 'Too many attempts. Please try again later',
@@ -65,12 +80,9 @@
 			'auth/user-disabled': 'This account has been disabled'
 		};
 
-		errorMessage = errorMessages[error.code] || 'Something went wrong. Please try again..';
-		
+		errorMessage = errorMessages[error?.code] || 'Something went wrong. Please try again.';
 	};
 </script>
-
-
 
 <section class="auth-container">
     <div class="auth-card">
