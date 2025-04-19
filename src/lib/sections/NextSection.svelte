@@ -30,21 +30,25 @@
             category: "Programming",
             questions: 25,
             difficulty: "Advanced",
-            attempts: "1.2K"
+            attempts: "1.2K",
+            link: "/quizzes/javascript-master"
         },
         {
             title: "Human Anatomy",
             category: "Biology",
             questions: 30,
             difficulty: "Intermediate",
-            attempts: "890"
+            attempts: "890",
+ link: "/quizzes/human-anatomy"
+
         },
         {
             title: "World Capitals",
             category: "Geography",
             questions: 50,
             difficulty: "Easy",
-            attempts: "2.4K"
+            attempts: "2.4K",
+link: "/quizzes/world-capitals"
         }
     ];
 </script>
@@ -73,6 +77,7 @@
             <h2 class="section-title">Trending in Your Field</h2>
             <div class="carousel-container">
                 {#each trendingQuizzes as quiz}
+<a href={quiz.link}>
                     <div class="quiz-card" use:revealAnimation transition:fly={{ y: 20 }}>
                         <div class="quiz-thumbnail">
                             <div class="quiz-category">{quiz.category}</div>
@@ -91,6 +96,7 @@
                             </div>
                         </div>
                     </div>
+</a>
                 {/each}
             </div>
         </div>
