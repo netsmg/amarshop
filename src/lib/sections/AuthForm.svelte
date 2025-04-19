@@ -13,20 +13,25 @@
 	let isLoading = false;
 	let isLogin = true;
 
+	const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
+
+	const validateForm = () => {
+		if (!email || !password) {
+			errorMessage = 'Please fill in all fields';
+			return false;
+		}
+		if (!emailRegex.test(email)) {
+			errorMessage = 'Please enter a valid email address';
+			return false;
+		}
+		return true;
+	};
+
 	const handleAuth = async () => {
 		errorMessage = '';
 		successMessage = '';
 
-		if (!email || !password) {
-			errorMessage = 'Please fill in all fields';
-			return;
-		}
-
-		const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-		if (!emailRegex.test(email)) {
-			errorMessage = 'Please enter a valid email address';
-			return;
-		}
+		if (!validateForm()) return;
 
 		isLoading = true;
 
@@ -38,7 +43,7 @@
 				await createUserWithEmailAndPassword(auth, email, password);
 				successMessage = 'Registration successful! Redirecting...';
 			}
-			setTimeout(() => goto('/dashboard'), 1500); // Redirect after success
+			setTimeout(() => goto('/dashboard'), 1500);
 		} catch (error) {
 			handleAuthError(error);
 			password = '';
@@ -59,7 +64,9 @@
 			'auth/operation-not-allowed': 'Authentication method not enabled',
 			'auth/user-disabled': 'This account has been disabled'
 		};
-		errorMessage = errorMessages[error.code];
+
+		errorMessage = errorMessages[error.code] || 'Something went wrong. Please try again.';
+		console.error('Firebase Auth Error:', error);
 	};
 </script>
 
