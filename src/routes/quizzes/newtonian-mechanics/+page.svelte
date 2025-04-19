@@ -1,0 +1,40 @@
+<script>
+	import PageTitle from '$lib/components/PageTitle.svelte';
+	import McqCard from '$lib/components/mcq/TestCard.svelte';
+</script>
+
+<svelte:head>
+	<title> Newtonian mechanics| Mcq Store</title>
+	<meta name="description" content="Mcq Store javascript" />
+</svelte:head>
+
+<PageTitle pageTitle="Newtonian mechanics" />
+
+<section class="contact">
+	
+<McqCard question="নিউটনের প্রথম গতিসূত্র কী নির্দেশ করে?" questionNumber=1 questionTag="নিউটনীয় বলবিজ্ঞান" options={["বস্তুর ত্বরণ বলের সমানুপাতিক", "প্রতিটি ক্রিয়ার সমান ও বিপরীত প্রতিক্রিয়া আছে", "বস্তু স্থির বা সমবেগে থাকে যদি কোনো বাহ্যিক বল না থাকে", "শক্তি সংরক্ষণের নীতি"]} correctAnswer={2} explanation="নিউটনের প্রথম গতিসূত্র (জড়তার সূত্র) বলে, কোনো বস্তু স্থির থাকে বা সমবেগে সরলরেখায় চলতে থাকে যদি তার উপর কোনো বাহ্যিক বল প্রয়োগ না করা হয়।" />
+  
+<McqCard question="নিউটনের দ্বিতীয় গতিসূত্রের সূত্র কোনটি?" questionNumber=2 questionTag="নিউটনীয় বলবিজ্ঞান" options={["F = ma", "F = mv", "F = m/a", "F = m^2a"]} correctAnswer={0} explanation="নিউটনের দ্বিতীয় গতিসূত্র বলে, কোনো বস্তুর উপর প্রযুক্ত বল (F) বস্তুর ভর (m) এবং ত্বরণ (a) এর গুণফলের সমান। সূত্র: F = ma।" />
+  <McqCard question="নিউটনের তৃতীয় গতিসূত্র অনুসারে কী ঘটে?" questionNumber=3 questionTag="নিউটনীয় বলবিজ্ঞান" options={["বস্তু স্থির থাকে", "প্রতিটি ক্রিয়ার একটি সমান ও বিপরীত প্রতিক্রিয়া থাকে", "বস্তুর ত্বরণ ভরের বিপরীত সমানুপাতিক", "শক্তি সংরক্ষিত থাকে"]} correctAnswer={1} explanation="নিউটনের তৃতীয় গতিসূত্র বলে, প্রতিটি ক্রিয়ার জন্য একটি সমান ও বিপরীতমুখী প্রতিক্রিয়া থাকে।" />
+  
+  <McqCard question="একটি বস্তুর ভর 5 কেজি এবং ত্বরণ 2 মি/সে^2 হলে বল কত?" questionNumber=4 questionTag="নিউটনীয় বলবিজ্ঞান" options={["7 নিউটন", "10 নিউটন", "2.5 নিউটন", "15 নিউটন"]} correctAnswer={1} explanation="নিউটনের দ্বিতীয় সূত্র অনুসারে, F = ma। এখানে, m = 5 কেজি, a = 2 মি/সে^2। সুতরাং, F = 5 × 2 = 10 নিউটন।" />
+  
+  <McqCard question="জড়তা কী?" questionNumber=5 questionTag="নিউটনীয় বলবিজ্ঞান" options={["বস্তুর গতি পরিবর্তনের প্রতিরোধ ক্ষমতা", "বস্তুর ওজন", "বস্তুর আয়তন", "বস্তুর ঘনত্ব"]} correctAnswer={0} explanation="জড়তা হলো বস্তুর গতির অবস্থা (স্থির বা চলমান) পরিবর্তনের প্রতিরোধ ক্ষমতা, যা ভরের উপর নির্ভর করে।" />
+
+  <McqCard question="একটি 10 কেজি বস্তুর উপর 50 নিউটন বল প্রয়োগ করলে ত্বরণ কত হবে?" questionNumber=6 questionTag="নিউটনীয় বলবিজ্ঞান" options={["5 মি/সে^2", "10 মি/সে^2", "2 মি/সে^2", "50 মি/সে^2"]} correctAnswer={0} explanation="F = ma থেকে, a = F/m। এখানে, F = 50 নিউটন, m = 10 কেজি। সুতরাং, a = 50/10 = 5 মি/সে^2।" />
+<McqCard question="ঘর্ষণ বল কী?" questionNumber=7 questionTag="নিউটনীয় বলবিজ্ঞান" options={["দুটি পৃষ্ঠের মধ্যে গতির বিরোধী বল", "বস্তুর ওজন", "চৌম্বকীয় আকর্ষণ", "মাধ্যাকর্ষণ বল"]} correctAnswer={0} explanation="ঘর্ষণ বল হলো দুটি পৃষ্ঠের মধ্যে সংস্পর্শে থাকা অবস্থায় গতির বিরোধী বল।" />
+<McqCard question="মাধ্যাকর্ষণ বলের সূত্র কোনটি?" questionNumber=8 questionTag="নিউটনীয় বলবিজ্ঞান" options={["F = ma", "F = Gm1m2/r^2", "F = mv^2/r", "F = kx"]} correctAnswer={1} explanation="নিউটনের সর্বজনীন মাধ্যাকর্ষণ সূত্র হলো F = Gm1m2/r^2, যেখানে G হলো মাধ্যাকর্ষণ ধ্রুবক।" />
+<McqCard question="একটি বস্তু মুক্ত পতনের সময় কোন বল কাজ করে?" questionNumber=9 questionTag="নিউটনীয় বলবিজ্ঞান" options={["ঘর্ষণ বল", "মাধ্যাকর্ষণ বল", "চৌম্বকীয় বল", "ইলেক্ট্রোস্ট্যাটিক বল"]} correctAnswer={1} explanation="মুক্ত পতনের সময় বস্তুর উপর শুধু মাধ্যাকর্ষণ বল কাজ করে, যা পৃথিবীর কেন্দ্রের দিকে টানে।" /><McqCard question="নিউটনের তৃতীয় সূত্রের একটি উদাহরণ কোনটি?" questionNumber=10 questionTag="নিউটনীয় বলবিজ্ঞান" options={["বস্তু স্থির থাকা", "রকেটের উৎক্ষেপণ", "ঘর্ষণ বলের ক্রিয়া", "মাধ্যাকর্ষণ বল"]} correctAnswer={1} explanation="রকেটের উৎক্ষেপণে গ্যাস নিচের দিকে নির্গত হয় (ক্রিয়া) এবং রকেট উপরের দিকে চলে (প্রতিক্রিয়া), যা নিউটনের তৃতীয় সূত্রের উদাহরণ।" />
+  <McqCard question="একটি বস্তুর ভর দ্বিগুণ করলে জড়তা কী হবে?" questionNumber=11 questionTag="নিউটনীয় বলবিজ্ঞান" options={["অর্ধেক হবে", "দ্বিগুণ হবে", "একই থাকবে", "চতুর্গুণ হবে"]} correctAnswer={1} explanation="জড়তা ভরের উপর নির্ভর করে। ভর দ্বিগুণ হলে জড়তাও দ্বিগুণ হয়।" /><McqCard question="ত্বরণের একক কী?" questionNumber=12 questionTag="নিউটনীয় বলবিজ্ঞান" options={["মি/সে", "মি/সে^2", "নিউটন", "কেজি"]} correctAnswer={1} explanation="ত্বরণ হলো বেগের পরিবর্তনের হার, যার একক মিটার প্রতি সেকেন্ড^2 (মি/সে^2)।" />
+  <McqCard question="বলের এসআই একক কী?" questionNumber=13 questionTag="নিউটনীয় বলবিজ্ঞান" options={["জুল", "নিউটন", "ওয়াট", "প্যাসকেল"]} correctAnswer={1} explanation="বলের এসআই একক হলো নিউটন (N), যা 1 কেজি ভরের বস্তুকে 1 মি/সে^2 ত্বরণ প্রদান করে।" />
+  <McqCard question="একটি বস্তু স্থির থাকলে তার উপর নেট বল কত?" questionNumber=14 questionTag="নিউটনীয় বলবিজ্ঞান" options={["শূন্য", "ধ্রুবক", "অনির্দিষ্ট", "ভরের সমান"]} correctAnswer={0} explanation="নিউটনের প্রথম সূত্র অনুসারে, স্থির বস্তুর উপর নেট বল শূন্য হয়।" /><McqCard question="ঘর্ষণ বল কোন দিকে কাজ করে?" questionNumber=15 questionTag="নিউটনীয় বলবিজ্ঞান" options={["গতির দিকে", "গতির বিপরীত দিকে", "উল্লম্ব দিকে", "কোনো নির্দিষ্ট দিকে নয়"]} correctAnswer={1} explanation="ঘর্ষণ বল সবসময় গতির বিপরীত দিকে কাজ করে, যা গতিকে বাধা দেয়।" />
+<McqCard question="মাধ্যাকর্ষণ ত্বরণের মান পৃথিবীর পৃষ্ঠে কত?" questionNumber=16 questionTag="নিউটনীয় বলবিজ্ঞান" options={["9.8 মি/সে^2", "8.9 মি/সে^2", "10 মি/সে^2", "7.8 মি/সে^2"]} correctAnswer={0} explanation="পৃথিবীর পৃষ্ঠে মাধ্যাকর্ষণ ত্বরণের মান প্রায় 9.8 মি/সে^2।" /><McqCard question="একটি 2 কেজি বস্তু 9.8 মি/সে^2 ত্বরণে পড়লে বল কত?" questionNumber=17 questionTag="নিউটনীয় বলবিজ্ঞান" options={["19.6 নিউটন", "4.9 নিউটন", "2 নিউটন", "9.8 নিউটন"]} correctAnswer={0} explanation="F = ma। এখানে, m = 2 কেজি, a = 9.8 মি/সে^2। সুতরাং, F = 2 × 9.8 = 19.6 নিউটন।" /><McqCard question="নিউটনের সূত্রগুলো কোন ধরনের গতি বর্ণনা করে?" questionNumber=18 questionTag="নিউটনীয় বলবিজ্ঞান" options={["অভিন্ন গতি", "ত্বরিত গতি", "সরলরৈখিক গতি", "সমস্ত ধরনের গতি"]} correctAnswer={3} explanation="নিউটনের সূত্রগুলো স্থির, অভিন্ন গতি এবং ত্বরিত গতিসহ সকল ধরনের গতি বর্ণনা করে।" /><McqCard question="একটি বস্তুর ভর কম হলে ত্বরণ কী হবে?" questionNumber=19 questionTag="নিউটনীয় বলবিজ্ঞান" options={["কমবে", "বাড়বে", "একই থাকবে", "শূন্য হবে"]} correctAnswer={1} explanation="F = ma থেকে, ভর (m) কম হলে নির্দিষ্ট বলের জন্য ত্বরণ (a) বৃদ্ধি পায়।" />
+<McqCard question="মাধ্যাকর্ষণ ধ্রুবকের মান কত?" questionNumber=20 questionTag="নিউটনীয় বলবিজ্ঞান" options={["6.67 × 10^-11 Nm^2/kg^2", "9.8 মি/সে^2", "3 × 10^8 মি/সে", "1.6 × 10^-19 কুলম্ব"]} correctAnswer={0} explanation="মাধ্যাকর্ষণ ধ্রুবক (G) এর মান 6.67 × 10^-11 Nm^2/kg^2।" /><McqCard question="একটি বস্তুকে স্থির অবস্থা থেকে গতিশীল করতে কোন বল প্রয়োজন?" questionNumber=21 questionTag="নিউটনীয় বলবিজ্ঞান" options={["মাধ্যাকর্ষণ বল", "নেট বল", "ঘর্ষণ বল", "চৌম্বকীয় বল"]} correctAnswer={1} explanation="নিউটনের প্রথম সূত্র অনুসারে, স্থির বস্তুকে গতিশীল করতে নেট বল প্রয়োজন।" /><McqCard question="একটি বস্তুর ওজন কী?" questionNumber=22 questionTag="নিউটনীয় বলবিজ্ঞান" options={["ভরের পরিমাণ", "মাধ্যাকর্ষণ বলের ফল", "বস্তুর আয়তন", "বস্তুর ঘনত্ব"]} correctAnswer={1} explanation="ওজন হলো মাধ্যাকর্ষণ বলের ফল, যা W = mg দ্বারা প্রকাশ করা হয়।" /><McqCard question="একটি বস্তু স্থির থাকার জন্য কোন শর্ত পূরণ করতে হবে?" questionNumber=23 questionTag="নিউটনীয় বলবিজ্ঞান" options={["নেট বল শূন্য হবে", "নেট বল ধ্রুবক হবে", "ভর শূন্য হবে", "ত্বরণ ধ্রুবক হবে"]} correctAnswer={0} explanation="নিউটনের প্রথম সূত্র অনুসারে, বস্তু স্থির থাকার জন্য নেট বল শূন্য হতে হবে।" /><McqCard question="একটি 20 নিউটন বল 4 কেজি বস্তুর উপর কাজ করলে ত্বরণ কত?" questionNumber=24 questionTag="নিউটনীয় বলবিজ্ঞান" options={["5 মি/সে^2", "4 মি/সে^2", "10 মি/সে^2", "2 মি/সে^2"]} correctAnswer={0} explanation="F = ma থেকে, a = F/m। এখানে, F = 20 নিউটন, m = 4 কেজি। সুতরাং, a = 20/4 = 5 মি/সে^2।" /><McqCard question="নিউটনের সূত্রগুলো কোন ধরনের বস্তুর জন্য প্রযোজ্য?" questionNumber=25 questionTag="নিউটনীয় বলবিজ্ঞান" options={["কেবল কঠিন বস্তু", "কেবল তরল", "কেবল গ্যাস", "সকল ধরনের বস্তু"]} correctAnswer={3} explanation="নিউটনের সূত্রগুলো কঠিন, তরল এবং গ্যাসীয় সকল ধরনের বস্তুর জন্য প্রযোজ্য।" />
+
+</section>
+
+<style>
+	.contact {
+		padding: var(--space-l) var(--space-m);
+	}
+</style>
