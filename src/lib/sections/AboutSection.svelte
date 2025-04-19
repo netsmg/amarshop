@@ -50,7 +50,7 @@ import { Book, ArrowRight } from '$lib/icons';
     <!-- Mission Section -->
     <section class="mission-section">
         <div class="mission-content" use:revealAnimation>
-            <Target class="section-icon" />
+            <Book class="section-icon" />
             <h2 class="section-title">Our Core Mission</h2>
             <p class="section-text">
                 To empower learners worldwide through accessible, engaging, and 
@@ -77,7 +77,7 @@ import { Book, ArrowRight } from '$lib/icons';
 
     <!-- CTA Section -->
     <div class="cta-section" use:revealAnimation>
-        <Globe class="cta-icon" />
+        <Book class="cta-icon" />
         <h2 class="cta-title">Join Our Learning Community</h2>
         <p class="cta-text">Start your learning journey today with access to thousands of resources</p>
         <button class="cta-button">
