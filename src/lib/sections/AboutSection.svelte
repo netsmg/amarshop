@@ -1,6 +1,6 @@
 <script>
     import PageTitle from '$lib/components/PageTitle.svelte';
-    import { revealAnimation } from '$lib/actions/animation';
+    import { revealAnimation, decodeAnimation } from '$lib/actions/animation';
     import { Book, Clock, AutoFlash } from '$lib/icons';
     import { fly } from 'svelte/transition';
 
@@ -39,7 +39,7 @@
     <!-- Stats Grid -->
     <div class="stats-grid">
         {#each stats as item, i}
-            <div class="stat-card" transition:fly={{ y: 20, delay: i * 100 }} use:revealAnimation>
+            <div class="stat-card" transition:fly={{ y: 20, delay: i * 100 }} use:decodeAnimation>
                <center> <item.icon class="stat-icon" /> </center>
                 <div class="stat-value">{item.value}</div>
                 <div class="stat-label">{item.label}</div>
@@ -65,7 +65,7 @@
         <h2 class="section-title">Meet Our Team</h2>
         <div class="team-grid">
             {#each team as member, i}
-                <div class="team-card" transition:fly={{ y: 20, delay: i * 100 }} use:revealAnimation>
+                <div class="team-card" transition:fly={{ y: 20, delay: i * 100 }} use:decodeAnimation>
                     <img src={member.photo} alt={member.name} class="team-photo" />
                     <h3 class="team-name">{member.name}</h3>
                     <div class="team-role">{member.role}</div>
