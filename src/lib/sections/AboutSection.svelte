@@ -5,7 +5,7 @@ import { Book, ArrowRight } from '$lib/icons';
     import { fly } from 'svelte/transition';
 
     const team = [
-        { name: "John Doe", role: "Founder & CEO", bio: "Education technology expert with 10+ years experience", photo: "/images/about-1.png" },
+        { name: "Muhammad Al-amin", role: "Founder & CEO", bio: "Education technology expert with 10+ years experience", photo: "/images/about-1.png" },
         { name: "Jane Smith", role: "Content Director", bio: "Curriculum development specialist", photo: "/images/about-1.png" },
         { name: "Mike Johnson", role: "Tech Lead", bio: "Full-stack developer & learning platform architect", photo: "/images/about-1.png" }
     ];
