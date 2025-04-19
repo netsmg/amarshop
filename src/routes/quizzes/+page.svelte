@@ -46,7 +46,11 @@
         }
     
   
-    
+   .quize-section{
+        background: var(--background);
+        color: var(--text-primary);
+        line-height: 1.6;
+}
     
     .quiz-card {
         min-width: 320px;
@@ -56,6 +60,7 @@
         scroll-snap-align: start;
         transition: all 0.3s ease;
         border: 1px solid var(--glass-border);
+        padding: 15px;
     }
 
     .quiz-thumbnail {
@@ -120,6 +125,7 @@
     <title>Quizzes | Mcq Store</title>
     </svelte:head> 
 <PageTitle pageTitle="Quizzes" />
+<article class="quize-section">
 {#each trendingQuizzes as quiz}
                     <div class="quiz-card" use:revealAnimation transition:fly={{ y: 20 }}>
                         <div class="quiz-thumbnail">
@@ -140,5 +146,5 @@
                         </div>
                     </div>
                 {/each}
-
+</article>
                     
