@@ -9,7 +9,7 @@
         {
             title: "JavaScript Mastery",
             category: "Programming",
-            questions: 25,
+            questions: 26,
             difficulty: "Advanced",
             attempts: "1.2K",
             link:"quizzes/javascript-master"
@@ -17,18 +17,18 @@
         {
             title: "Human Anatomy",
             category: "Biology",
-            questions: 30,
+            questions: 25,
             difficulty: "Intermediate",
             attempts: "890",
-            link:"quizzes/javascript-master"
+            link:"quizzes/human-anatomy"
         },
         {
             title: "World Capitals",
             category: "Geography",
-            questions: 50,
+            questions: 25,
             difficulty: "Easy",
             attempts: "2.4K",
-            link:"quizzes/javascript-master"
+            link:"quizzes/world-capitals"
         }
     ];
 </script>
