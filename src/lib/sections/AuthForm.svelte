@@ -56,7 +56,7 @@
 		const errorMessages = {
 			'auth/email-already-in-use': 'Email already in use',
 			'auth/invalid-email': 'Invalid email address',
-			'auth/weak-password': 'Password must be at least 6 characters',
+			'auth/password-does-not-meet-requirements': 'Password must be at least 6 characters, number, capital letter and one special character.',
 			'auth/user-not-found': 'No account found with this email',
 			'auth/invalid-credential': 'Incorrect password or email',
 			'auth/too-many-requests': 'Too many attempts. Please try again later',
