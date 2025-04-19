@@ -59,7 +59,7 @@
 			'auth/operation-not-allowed': 'Authentication method not enabled',
 			'auth/user-disabled': 'This account has been disabled'
 		};
-		errorMessage = errorMessages[error.code] || 'Authentication failed. Please try again';
+		errorMessage = errorMessages[error.code];
 	};
 </script>
 
@@ -146,8 +146,6 @@
     .auth-container {
         display: grid;
         place-items: center;
-        min-height: 100vh;
-        padding: 1rem;
     }
 
     .auth-card {
