@@ -84,6 +84,7 @@
 	};
 </script>
 
+
 <section class="auth-container">
     <div class="auth-card">
         <h1 class="auth-title">
@@ -168,14 +169,31 @@
     }
 
     .auth-card {
-        background: var(--glass-background-light);
+  background: var(--glass-background-light);
   backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
   box-shadow: var(--glass-shadow);
   padding: 1.5rem;
   transition: var(--transition);
-    }
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 1rem;
+    border-radius: calc(var(--border-radius) * 0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 0.75rem;
+    border-radius: calc(var(--border-radius) * 0.6);
+  }
+}
 
     .auth-title {
         position: relative;
