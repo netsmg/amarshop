@@ -168,14 +168,13 @@
     }
 
     .auth-card {
-        width: 100%;
-        max-width: 440px;
-        padding: 2.5rem;
-        background: #ffffff;
-        border-radius: 1.5rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                    0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+        background: var(--glass-background-light);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--glass-shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
     }
 
     .auth-title {
