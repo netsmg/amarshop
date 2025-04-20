@@ -6,6 +6,14 @@
 
     
     let trendingQuizzes = [ 
+{
+            title: "Basic chemestry",
+            category: "Chemestry",
+            questions: 25,
+            difficulty: "Easy",
+            attempts: "1.87K",
+            link:"quizzes/basic-chemestry"
+        },
         {
             title: "Newtonian Mechanics",
             category: "Physics",
