@@ -90,7 +90,7 @@
 
     .question-number {
         font-weight: 600;
-        color: var(--accent-500);
+        color: var(--success-500);
         font-size: var(--step--1);
     }
 
@@ -153,7 +153,7 @@
 
     .option-number {
         font-weight: 600;
-        color: var(--accent-500);
+        color: var(--success-500);
     }
 
     .option-right {
@@ -189,7 +189,7 @@
         }
 
         .explanation {
-         color: var(--accent-500);
+         color: var(--success-500);
         font-size: var(--step--1);
         margin-top: var(--space-xs);
         }
