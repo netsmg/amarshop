@@ -17,12 +17,12 @@
 	<div class="footer__copyright">
 		<div use:borderAnimation class="copyright__text">
 			
-			<p> <a href="/">MCQSTORE</a> © 2025 All rights reserved</p>
+			<p> <a href="/">MCQ STORE</a> &copy; 2025; All rights reserved.</p>
 		</div>
 
 		<div class="copyright__brand">
 			<Logo />
-			<div class="textTrim">MCQSTORE</div>
+			<div class="textTrim">MCQ STORE</div>
 		</div>
 	</div>
 </footer>
