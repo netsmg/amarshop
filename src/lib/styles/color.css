@@ -1,47 +1,62 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --text-50: #fdfdfd;
-    --text-100: #f4f4f5;
-    --text-200: #e4e4e7;
-    --text-300: #d4d4d8;
-    --text-400: #a1a1aa;
-    --text-500: #71717a;
-    --text-600: #52525b;
-    --text-700: #3f3f46;
-    --text-800: #27272a;
-    --text-900: #18181b;
+    /* Text Colors - Higher contrast for readability */
+    --text-50: rgba(250, 250, 250, 0.95);
+    --text-100: rgba(244, 244, 245, 0.9);
+    --text-200: rgba(228, 228, 231, 0.8);
+    --text-300: rgba(212, 212, 216, 0.7);
+    --text-400: rgba(161, 161, 170, 0.6);
+    --text-500: rgba(113, 113, 122, 0.9);
+    --text-600: rgba(82, 82, 91, 0.95);
+    --text-700: rgba(63, 63, 70, 0.97);
+    --text-800: rgba(39, 39, 42, 0.98);
+    --text-900: rgba(24, 24, 27, 0.99);
 
-    --background-50: #ffffff;
-    --background-100: #fafafa;
-    --background-200: #f5f5f5;
-    --background-300: #e5e5e5;
-    --background-400: #d4d4d4;
-    --background-500: #a3a3a3;
-    --background-600: #737373;
-    --background-700: #525252;
-    --background-800: #404040;
-    --background-900: #262626;
+    /* Background Colors - Translucent layers */
+    --background-50: rgba(255, 255, 255, 0.9);
+    --background-100: rgba(255, 255, 255, 0.8);
+    --background-200: rgba(255, 255, 255, 0.7);
+    --background-300: rgba(255, 255, 255, 0.6);
+    --background-400: rgba(255, 255, 255, 0.5);
+    --background-500: rgba(255, 255, 255, 0.4);
+    --background-600: rgba(255, 255, 255, 0.3);
+    --background-700: rgba(255, 255, 255, 0.2);
+    --background-800: rgba(255, 255, 255, 0.15);
+    --background-900: rgba(255, 255, 255, 0.1);
 
-    --primary-50: #f0fdfa;
-    --primary-100: #ccfbf1;
-    --primary-200: #99f6e4;
-    --primary-300: #5eead4;
-    --primary-400: #2dd4bf;
-    --primary-500: #14b8a6;
-    --primary-600: #0d9488;
-    --primary-700: #0f766e;
-    --primary-800: #115e59;
-    --primary-900: #134e4a;
+    /* Primary Colors - Adjusted for glass effect */
+    --primary-50: rgba(240, 253, 250, 0.9);
+    --primary-100: rgba(204, 251, 241, 0.8);
+    --primary-200: rgba(153, 246, 228, 0.7);
+    --primary-300: rgba(94, 234, 212, 0.6);
+    --primary-400: rgba(45, 212, 191, 0.5);
+    --primary-500: rgba(20, 184, 166, 0.9);
+    --primary-600: rgba(13, 148, 136, 0.95);
+    --primary-700: rgba(15, 118, 110, 0.97);
+    --primary-800: rgba(17, 94, 89, 0.98);
+    --primary-900: rgba(19, 78, 74, 0.99);
 
-    --secondary-500: #eab308;
-    --accent-500: #6366f1;
-    --success-500: #10b981;
-    --error-500: #ef4444;
+    /* Glass Effect Variables */
+    --glass-background: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --backdrop-blur: blur(12px);
+    --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 
-    --brand-border: #14b8a6;
-    --transition: ease-in-out;
+    /* Accent Colors - Maintain vibrancy */
+    --secondary-500: rgba(234, 179, 8, 0.9);
+    --accent-500: rgba(99, 102, 241, 0.9);
+    --success-500: rgba(16, 185, 129, 0.9);
+    --error-500: rgba(239, 68, 68, 0.9);
+
+    /* Border Effects */
+    --brand-border: rgba(20, 184, 166, 0.3);
+    --border-radius: 12px;
+    
+    /* Transitions */
+    --transition: all 0.3s ease-in-out;
   }
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text-50: #f4f4f5;
