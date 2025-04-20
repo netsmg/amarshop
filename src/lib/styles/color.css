@@ -49,7 +49,8 @@
     --error-500: rgba(239, 68, 68, 0.9);
 
     /* Border Effects */
-    --brand-border: rgba(20, 184, 166, 0.3);
+
+    --brand-border: #14b8a6;
     --border-radius: 12px;
     
     /* Transitions */
