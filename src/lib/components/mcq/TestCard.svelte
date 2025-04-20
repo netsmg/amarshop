@@ -90,13 +90,13 @@
 
     .question-number {
         font-weight: 600;
-        color: var(--primary-500);
+        color: var(--accent-500);
         font-size: var(--step--1);
     }
 
     .question-tag {
         background: var(--primary-100);
-        color: var(--primary-500);
+        color: var(--accent-500);
         padding: var(--space-3xs) var(--space-xs);
         border-radius: 1rem;
         font-size: var(--step--2);
@@ -153,7 +153,7 @@
 
     .option-number {
         font-weight: 600;
-        color: var(--primary-500);
+        color: var(--accent-500);
     }
 
     .option-right {
@@ -164,7 +164,7 @@
 
     .option-tag {
         background: var(--background-300);
-        color: var(--text-300);
+        color: var(--accent-500);
         padding: var(--space-3xs) var(--space-2xs);
         border-radius: 1rem;
         font-size: var(--step--2);
@@ -189,7 +189,7 @@
         }
 
         .explanation {
-         color: var(--primary-500);
+         color: var(--accent-500);
         font-size: var(--step--1);
         margin-top: var(--space-xs);
         }
