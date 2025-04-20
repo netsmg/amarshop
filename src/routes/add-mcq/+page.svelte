@@ -57,9 +57,7 @@
 <svelte:head>
     <title>Add MCQ | Amar Shop</title>
 </svelte:head>
-<div class="glass-card">
-Im herre 
-</div>
+
 <div class="container">
     <h1>Add New MCQ Question</h1>
     
@@ -215,13 +213,5 @@ Im herre
         margin-bottom: 1rem;
         text-align: center;
     }
-.glass-card {
-  background: var(--glass-background);
-  backdrop-filter: var(--backdrop-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--glass-shadow);
-  padding: 1.5rem;
-  transition: var(--transition);
-}
+
 </style>
