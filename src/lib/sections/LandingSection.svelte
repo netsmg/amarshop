@@ -20,7 +20,7 @@ import { Book,
                 <button class="search-button"><Search /></button>
             </div>
             
-            <a href="/exams" class="cta-button" use:borderAnimation>
+            <a href="/exams" class="cta-buttons" use:borderAnimation>
                 Start Quiz Now
                 <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -158,14 +158,14 @@ import { Book,
     color: var(--primary-500);
 }
 
-.cta-button {
+.cta-buttons {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     padding: 1.25rem 3rem;
     background: var(--primary-500);
     color: var(--text-50);
-    border-radius: 50px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
