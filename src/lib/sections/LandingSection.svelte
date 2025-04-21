@@ -171,6 +171,8 @@ import { Book,
     transition: var(--transition);
     backdrop-filter: var(--backdrop-blur);
     margin: 2rem 0;
+    height: 45px;
+   
 }
 
 .cta-buttons:hover {
