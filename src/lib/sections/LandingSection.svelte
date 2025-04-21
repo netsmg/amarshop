@@ -20,7 +20,7 @@ import { Book,
                 <button class="search-button"><Search /></button>
             </div>
             
-            <a href="/exams" class="cta-buttons" use:borderAnimation>
+            <a href="/exams" class="cta-button" use:borderAnimation>
                 Start Quiz Now
                 <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -158,11 +158,11 @@ import { Book,
     color: var(--primary-500);
 }
 
-.cta-buttons {
+.cta-button {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 1.25rem 3rem;
+    padding: 1rem 2rem;
     background: var(--primary-500);
     color: var(--text-50);
     border-radius: 25px;
@@ -170,15 +170,33 @@ import { Book,
     font-weight: 600;
     transition: var(--transition);
     backdrop-filter: var(--backdrop-blur);
-    margin: 2rem 0;
-    height: 45px;
-   
+    margin: 1.5rem 0;
+    font-size: 1rem;
+    height: auto;
+    white-space: nowrap;
 }
 
-.cta-buttons:hover {
+.cta-button:hover {
     background: var(--primary-600);
     transform: translateY(-2px) scale(1.02);
     box-shadow: var(--glass-shadow);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 .quiz-highlight {
@@ -263,11 +281,7 @@ import { Book,
 }
 
 @media (max-width: 480px) {
-    .cta-buttons {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem 2rem;
-    }
+    
     
     .search-input {
         padding: 1rem 2rem;
