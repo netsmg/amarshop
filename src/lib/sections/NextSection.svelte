@@ -215,14 +215,14 @@ link: "/quizzes/world-capitals"
     .stat-number {
         font-size: 2.5rem;
         font-weight: 700;
-        background: linear-gradient(var(--secondary-100), var(--primary-500));
+        background: linear-gradient(var(--accent-500), var(--primary-500));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
 
     .stat-label {
-        color: #94a3b8;
+        color: var(--text-600);
         font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
