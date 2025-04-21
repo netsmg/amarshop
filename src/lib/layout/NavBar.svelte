@@ -92,7 +92,7 @@
 		display: grid;
 		grid-template-columns: 2fr 1fr;
 		width: 100%;
-		background-color: linear-gradient(145deg, var(--primary-300) 0%, var(--accent-500) 100%);
+		background-color: var(--background-50);
 		height: 64px;
 	}
 
