@@ -143,6 +143,7 @@ link: "/quizzes/world-capitals"
 </section>
 
 <style>
+
     /* Base Styles */
     :global(:root) {
             --primary: #6366f1;
@@ -152,28 +153,35 @@ link: "/quizzes/world-capitals"
             --text-primary: #f8fafc;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
-        }
+    --hero-gradient: linear-gradient(145deg, var(--primary-300) 0%, var(--accent-500) 100%);
+    --text-gradient: linear-gradient(45deg, var(--primary-500) 0%, var(--accent-500) 100%);
+}
+
+.hero {
+    padding: 4rem 1rem;
+    background: var(--hero-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--glass-background);
+    backdrop-filter: var(--backdrop-blur);
+}
+
+.hero-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+  
     
-  .hero {
-        background: var(--background);
-        color: var(--text-primary);
-        font-family: 'Inter', system-ui, sans-serif;
-        line-height: 1.6;
-    }
-
-    .hero {
-        padding: 6rem 1rem 10rem;
-        background: linear-gradient(135deg, var(--background) 0%, #1e293b 100%);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-content {
-        max-width: 1440px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-    }
 
     /* Header Group */
     .header-group {
