@@ -190,12 +190,11 @@ import { Book,
     }
 }
 
+
 @media (max-width: 480px) {
     .cta-button {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
-        width: 100%;
-        justify-content: center;
     }
 }
 
