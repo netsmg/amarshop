@@ -8,12 +8,16 @@ import { Book,
 <section class="hero">
     <div class="hero-content">
         <div class="header-group">
-            <h1 class="hero-title"> <span class="gradient-text"> Master Your Knowledge </span> with Free MCQ Quizzes</h1>
-            <p class="hero-subtitle" use:decodeAnimation>Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!</p>
+            <h1 class="hero-title">
+                <span class="gradient-text">Master Your Knowledge</span> with Free MCQ Quizzes
+            </h1>
+            <p class="hero-subtitle" use:decodeAnimation>
+                Test your skills, learn new concepts, and ace your exams with our interactive quizzes – anytime, anywhere!
+            </p>
             
             <div class="search-container" use:revealAnimation>
-                <input type="text" placeholder="Search quizzes by subject or topic..." class="search-input">
-                <button class="search-button"> <Search /> </button>
+                <input type="text" placeholder="Search quizzes by subject or topic..." class="search-input" />
+                <button class="search-button"><Search /></button>
             </div>
             
             <a href="/exams" class="cta-button" use:borderAnimation>
@@ -29,11 +33,11 @@ import { Book,
                 <div class="quiz-badge">Quiz of the Day</div>
                 <h3>World History Challenge</h3>
                 <p>20 Questions | Medium Difficulty | 4.8 ⭐ Rating</p>
-               
             </div>
         </div>
 
         <div class="features-grid">
+            
             <div class="feature-card" use:revealAnimation>
                 <div class="feature-icon"> <Book /> </div>
                 <h4>Wide Range of Topics</h4>
@@ -58,22 +62,39 @@ import { Book,
 </section>
 
 <style>
+:global(:root) {
+    --hero-gradient: linear-gradient(145deg, var(--primary-300) 0%, var(--accent-500) 100%);
+    --text-gradient: linear-gradient(45deg, var(--primary-500) 0%, var(--accent-500) 100%);
+}
+
 .hero {
     padding: 4rem 1rem;
-    background: linear-gradient(135deg, #f0f9ff 0%, #ebf8ff 100%);
+    background: var(--hero-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--glass-background);
+    backdrop-filter: var(--backdrop-blur);
 }
 
 .hero-content {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
+
 .gradient-text {
-        background: linear-gradient(45deg, #818cf8, #f472b6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 
 .header-group {
     max-width: 800px;
@@ -81,16 +102,20 @@ import { Book,
 }
 
 .hero-title {
-    font-size: 2.75rem;
-    color: #1e3a8a;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--text-900);
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    font-weight: 800;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    color: #4b5563;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-600);
     margin-bottom: 2rem;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search-container {
@@ -101,67 +126,73 @@ import { Book,
 
 .search-input {
     width: 100%;
-    padding: 1rem 2rem;
-    border: 2px solid #bfdbfe;
+    padding: 1.25rem 2.5rem;
+    border: 2px solid var(--glass-border);
     border-radius: 50px;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    background: var(--glass-background);
+    backdrop-filter: var(--backdrop-blur);
+    transition: var(--transition);
+    color: var(--text-800);
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px var(--primary-100);
 }
 
 .search-button {
     position: absolute;
-    right: 1rem;
+    right: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
-    font-size: 1.2rem;
+    color: var(--text-600);
     cursor: pointer;
-    color: #64748b;
+    transition: var(--transition);
+}
+
+.search-button:hover {
+    color: var(--primary-500);
 }
 
 .cta-button {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 1rem 2.5rem;
-    background: #3b82f6;
-    color: white;
+    padding: 1.25rem 3rem;
+    background: var(--primary-500);
+    color: var(--text-50);
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
-    margin: 1rem 0;
+    transition: var(--transition);
+    border: 2px solid var(--primary-600);
+    backdrop-filter: var(--backdrop-blur);
+    margin: 2rem 0;
 }
 
 .cta-button:hover {
-    background: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-}
-
-.cta-icon {
-    width: 20px;
-    height: 20px;
+    background: var(--primary-600);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--glass-shadow);
 }
 
 .quiz-highlight {
-    margin: 3rem 0;
+    margin: 4rem 0;
 }
 
 .quiz-of-day {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background: var(--glass-background);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     position: relative;
-    max-width: 600px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -170,69 +201,75 @@ import { Book,
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: #f59e0b;
-    color: white;
-    padding: 0.5rem 1.5rem;
+    background: var(--accent-500);
+    color: var(--text-50);
+    padding: 0.5rem 2rem;
     border-radius: 25px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
+    border: 1px solid var(--accent-600);
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    transition: transform 0.3s ease;
+    background: var(--glass-background);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--backdrop-blur);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    background: var(--primary-50);
+    border-color: var(--primary-200);
 }
 
 .feature-icon {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    color: var(--primary-500);
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 50%;
+    background: var(--glass-background);
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto; /* center horizontally */
+    margin: 0 auto 1.5rem;
 }
-    
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
     .hero {
-        padding: 2rem 1rem;
-    }
-    
-    .cta-button {
-        width: 100%;
-        justify-content: center;
+        padding: 3rem 1rem;
     }
     
     .quiz-of-day {
         padding: 1.5rem;
     }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
 }
 
+@media (max-width: 480px) {
+    .cta-button {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 2rem;
+    }
+    
+    .search-input {
+        padding: 1rem 2rem;
+    }
+}
 </style>
