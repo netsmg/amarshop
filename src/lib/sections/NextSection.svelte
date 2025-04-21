@@ -1,9 +1,9 @@
 <script>
     import { borderAnimation, decodeAnimation, revealAnimation } from '$lib/actions/animation';
     import { Book, Clock, Search, AutoFlash, ArrowRight } from '$lib/icons';
-    import { fade, fly } from 'svelte/transition';
+    import { fade, fly, slide } from 'svelte/transition';
 
-    let testimonials = [
+let testimonials = [
         {
             name: "Sarah Johnson",
             role: "Med Student",
@@ -23,7 +23,6 @@
             avatar: "/avatars/social-proof03.jpg"
         }
     ];
-
     let trendingQuizzes = [
         {
             title: "JavaScript Mastery",
@@ -51,399 +50,218 @@
 link: "/quizzes/world-capitals"
         }
     ];
+   
 </script>
-
-
 
 <section class="hero">
     <div class="hero-content">
-        <!-- Main Header -->
-        <div class="header-group" in:fly={{ y: 50, duration: 500 }}>
-            
-               <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">500K+</span>
-                    <span class="stat-label">Daily Challenges</span>
+        <!-- Modern Stats Grid -->
+        <div class="stats-grid" use:revealAnimation>
+            {#each [
+                { value: '500K+', label: 'Daily Challenges', color: 'bg-accent' },
+                { value: '98%', label: 'Success Rate', color: 'bg-secondary' },
+                { value: '50+', label: 'Categories', color: 'bg-primary' }
+            ] as stat}
+                <div class="stat-card" transition:slide|local>
+                    <div class="stat-highlight {stat.color}" />
+                    <div class="stat-content">
+                        <span class="stat-value">{stat.value}</span>
+                        <span class="stat-label">{stat.label}</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">Success Rate</span>
-                </div>
-            </div>
+            {/each}
         </div>
 
-        <!-- Trending Section -->
-        <div class="carousel-section" in:fade>
-            <h2 class="section-title">Trending in Your Field</h2>
-            <div class="carousel-container">
+        <!-- Modern Carousel -->
+        <div class="carousel-section">
+            <h2 class="gradient-heading">Trending Now</h2>
+            <div class="horizontal-scroll">
                 {#each trendingQuizzes as quiz}
-<a href={quiz.link}>
-                    <div class="quiz-card" use:revealAnimation transition:fly={{ y: 20 }}>
-                        <div class="quiz-thumbnail">
-                            <div class="quiz-category">{quiz.category}</div>
-                        </div>
-                        <div class="quiz-content">
-                            <h3>{quiz.title}</h3>
-                            <div class="quiz-meta">
-                                <span><Book /> {quiz.questions} Questions</span>
-                                <span> <AutoFlash /> {quiz.difficulty}</span>
-                            </div>
-                            <div class="quiz-stats">
-                                <span> <Clock /> {quiz.attempts} attempts</span>
-                                <button class="quiz-start">
-                                    Start Now <ArrowRight />
+                    <a href={quiz.link} class="quiz-card-wrapper">
+                        <article class="quiz-card" use:borderAnimation>
+                            <div class="quiz-gradient" />
+                            <div class="quiz-content">
+                                <header>
+                                    <span class="quiz-category">{quiz.category}</span>
+                                    <h3>{quiz.title}</h3>
+                                </header>
+                                <div class="quiz-meta">
+                                    <div class="meta-item">
+                                        <Book aria-hidden="true" />
+                                        <span>{quiz.questions} Questions</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <AutoFlash aria-hidden="true" />
+                                        <span>{quiz.difficulty}</span>
+                                    </div>
+                                </div>
+                                <button class="hover-slide">
+                                    Start Quiz
+                                    <ArrowRight class="arrow-hover" />
                                 </button>
                             </div>
-                        </div>
-                    </div>
-</a>
+                        </article>
+                    </a>
                 {/each}
             </div>
         </div>
 
-        <!-- Features Grid -->
+        <!-- Modern Features Grid -->
         <div class="features-section">
-            <h2 class="section-title">Why Learners Choose Us</h2>
+            <h2 class="gradient-heading">Why Choose Us</h2>
             <div class="features-grid">
-                {#each [
-                    { icon: Book, title: 'Comprehensive Library', text: 'Daily updated questions across all subjects' },
-                    { icon: AutoFlash, title: 'AI Analysis', text: 'Detailed performance breakdowns' },
-                    { icon: Clock, title: 'Timed Drills', text: 'Simulate real exam conditions' },
-                    { icon: Book, title: 'Global Ranking', text: 'Compete with learners worldwide' },
-                    { icon: Clock, title: 'Progress Tracking', text: 'Visual learning journey mapping' }
-                ] as feature, i}
-                    <div class="feature-card" in:fly={{ delay: i * 100 }} use:revealAnimation>
-                       <center> <feature.icon class="feature-icon" /> </center>
+                {#each features as feature}
+                    <div class="feature-card" in:fly={{ y: 20 }}>
+                        <div class="feature-icon-wrapper">
+                            <feature.icon aria-hidden="true" />
+                        </div>
                         <h3>{feature.title}</h3>
                         <p>{feature.text}</p>
+                        <div class="feature-hover" />
                     </div>
                 {/each}
             </div>
         </div>
 
-        <!-- Testimonials -->
+        <!-- Modern Testimonials -->
         <div class="testimonials-section">
-            <h2 class="section-title">Success Stories</h2>
+            <h2 class="gradient-heading">Success Stories</h2>
             <div class="testimonials-grid">
-                {#each testimonials as testimonial}
-                    <div class="testimonial-card" transition:fly={{ y: 30 }} use:revealAnimation>
-                        <div class="user-avatar">
-                            <img src={testimonial.avatar} alt={testimonial.name} />
+                {#each testimonials as t}
+                    <figure class="testimonial-card" use:revealAnimation>
+                        <div class="avatar-container">
+                            <img src={t.avatar} alt={t.name} class="avatar-image" />
+                            <div class="avatar-border" />
                         </div>
-                        <p class="testimonial-text">"{testimonial.text}"</p>
-                        <div class="user-info">
-                            <strong>{testimonial.name}</strong>
-                            <span>{testimonial.role}</span>
-                        </div>
-                    </div>
+                        <blockquote class="testimonial-quote">
+                            "{t.text}"
+                        </blockquote>
+                        <figcaption class="testimonial-author">
+                            <strong>{t.name}</strong>
+                            <span>{t.role}</span>
+                        </figcaption>
+                    </figure>
                 {/each}
             </div>
         </div>
     </div>
-</section>
+</style>
 
-<style>
-
-    /* Base Styles */
+<style lang="postcss">
+    /* Modern Design System */
     :global(:root) {
-            --primary: #6366f1;
-            --secondary: #818cf8;
-            --accent: #f472b6;
-            --background: #0f172a;
-            --text-primary: #f8fafc;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-    --hero-gradient: linear-gradient(145deg, var(--primary-300) 0%, var(--accent-500) 100%);
-    --text-gradient: linear-gradient(45deg, var(--primary-500) 0%, var(--accent-500) 100%);
-}
-
-.hero {
-    padding: 4rem 1rem;
-    background: var(--hero-gradient);
-    position: relative;
-    overflow: hidden;
-}
-
-.hero:before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--glass-background);
-    backdrop-filter: var(--backdrop-blur);
-}
-
-.hero-content {
-    max-width: 1440px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-  
-    
-
-    /* Header Group */
-    .header-group {
-        max-width: 800px;
-        margin: 0 auto 4rem;
-        text-align: center;
+        --primary: 99 102 241;
+        --secondary: 129 140 248;
+        --accent: 244 114 182;
+        --background: 15 23 42;
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --gradient: linear-gradient(
+            145deg,
+            rgb(var(--primary)) 0%,
+            rgb(var(--accent)) 100%
+        );
     }
 
-    .hero-title {
-        font-size: 3.5rem;
-        margin-bottom: 2rem;
-        line-height: 1.1;
-        letter-spacing: -0.03em;
+    .hero {
+        @apply relative overflow-hidden py-20;
+        background: radial-gradient(ellipse at 75% 30%, rgba(var(--primary), 0.15) 0%, transparent 60%);
     }
 
-    .gradient-text {
-        background: linear-gradient(45deg, var(--secondary), var(--accent));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    
-    /* Stats Grid */
+    /* Modern Stats Grid */
     .stats-grid {
-        display: flex;
-        justify-content: center;
-        gap: 4rem;
-        margin-top: 3rem;
+        @apply grid gap-6 mb-20 md:grid-cols-3 max-w-6xl mx-auto;
+        perspective: 1000px;
     }
 
-    .stat-item {
-        text-align: center;
+    .stat-card {
+        @apply relative p-6 rounded-2xl overflow-hidden backdrop-blur-lg;
+        background: rgba(var(--primary)/0.1);
+        border: 1px solid rgba(var(--primary)/0.2);
+        transform-style: preserve-3d;
     }
 
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        background: linear-gradient(var(--secondary), var(--primary));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+    .stat-highlight {
+        @apply absolute inset-0 opacity-20 transition-opacity;
     }
 
-    .stat-label {
-        color: #94a3b8;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
+    /* Modern Carousel */
+    .horizontal-scroll {
+        @apply flex gap-6 pb-8 overflow-x-auto snap-x snap-mandatory;
+        scrollbar-width: none;
+        &::-webkit-scrollbar { @apply hidden }
     }
 
-    /* Carousel Section */
-    .carousel-section {
-        margin: 6rem 0;
-    }
-
-    .carousel-container {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 2rem;
-        overflow-x: auto;
-        padding: 2rem 0;
-        scroll-snap-type: x mandatory;
+    .quiz-card-wrapper {
+        @apply snap-center flex-shrink-0 w-[85vw] sm:w-96;
     }
 
     .quiz-card {
-        min-width: 320px;
-        background: var(--glass-bg);
-        border-radius: 1.5rem;
-        overflow: hidden;
-        scroll-snap-align: start;
-        transition: all 0.3s ease;
-        border: 1px solid var(--glass-border);
+        @apply relative h-96 rounded-2xl overflow-hidden p-6;
+        background: rgba(var(--primary)/0.05);
+        border: 1px solid rgba(var(--primary)/0.1);
     }
 
-    .quiz-thumbnail {
-        height: 180px;
-        background: linear-gradient(45deg, var(--primary), var(--accent));
-        position: relative;
-        padding: 1rem;
+    .quiz-gradient {
+        @apply absolute inset-0 opacity-0 transition-opacity;
+        background: var(--gradient);
     }
 
-    .quiz-category {
-        background: rgba(0, 0, 0, 0.3);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 2rem;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        font-size: 0.9rem;
+    /* Hover Effects */
+    .quiz-card:hover {
+        .quiz-gradient { @apply opacity-10 }
+        .arrow-hover { @apply translate-x-1 }
     }
 
-    .quiz-content {
-        padding: 1.5rem;
-    }
-
-    .quiz-meta {
-        display: flex;
-        justify-content: space-between;
-        color: #94a3b8;
-        font-size: 0.9rem;
-        margin: 1rem 0;
-    }
-
-    .quiz-stats {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1.5rem;
-    }
-
-    /* Features Grid */
-    .features-section {
-        margin: 6rem 0;
-    }
-
+    /* Modern Features */
     .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        padding: 0 2rem;
+        @apply grid gap-6 md:grid-cols-3 lg:grid-cols-5 max-w-6xl mx-auto;
     }
 
     .feature-card {
-        background: var(--glass-bg);
-        padding: 2.5rem;
-        border-radius: 1.5rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 1px solid var(--glass-border);
+        @apply relative p-8 rounded-2xl transition-all;
+        background: rgba(var(--primary)/0.05);
+        border: 1px solid rgba(var(--primary)/0.1);
+        &:hover { @apply -translate-y-2 }
     }
 
-    .feature-card:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
+    .feature-icon-wrapper {
+        @apply mb-4 p-4 rounded-2xl inline-flex;
+        background: rgba(var(--accent)/0.1);
+        svg { @apply w-8 h-8 }
     }
 
-    .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* center horizontally */
-}
-
-    /* Testimonials */
-    .testimonials-section {
-        margin: 8rem 0 4rem;
-    }
-
+    /* Modern Testimonials */
     .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
+        @apply grid gap-6 md:grid-cols-3 max-w-6xl mx-auto;
     }
 
     .testimonial-card {
-        background: var(--glass-bg);
-        padding: 2rem;
-        border-radius: 1.5rem;
-        text-align: center;
-        border: 1px solid var(--glass-border);
+        @apply relative p-8 rounded-2xl;
+        background: rgba(var(--primary)/0.05);
+        border: 1px solid rgba(var(--primary)/0.1);
     }
 
-    .user-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: -4rem auto 1.5rem;
-        border: 3px solid var(--primary);
+    .avatar-container {
+        @apply w-20 h-20 mx-auto -mt-12 mb-4 relative;
     }
 
-    .user-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .avatar-border {
+        @apply absolute inset-0 rounded-full border-2;
+        border-color: rgba(var(--accent)/0.4);
     }
 
-    .testimonial-text {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        min-height: 100px;
-    }
-
-    .user-info {
-        border-top: 1px solid var(--glass-border);
-        padding-top: 1rem;
+    /* Gradient Text */
+    .gradient-heading {
+        @apply text-4xl font-bold text-center mb-12 bg-clip-text;
+        background-image: var(--gradient);
+        -webkit-text-fill-color: transparent;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-        .hero-title {
-            font-size: 2.5rem;
-        }
-
-        .search-container {
-            flex-direction: column;
-            background: transparent;
-            padding: 0;
-            gap: 1rem;
-        }
-
-        .search-icon {
-            margin-left: 0;
-        }
-
-        .search-button {
-            width: 100%;
-            border-radius: 1rem;
-        }
-
-        .stats-grid {
-            gap: 2rem;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero-title {
-            font-size: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-        }
-
-        .features-grid,
-        .testimonials-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* Utility Classes */
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
-    }
-
-    .quiz-start {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .quiz-start:hover {
-        background: #4f46e5;
-        transform: scale(1.05);
+        .stats-grid { @apply grid-cols-1 }
+        .features-grid { @apply grid-cols-2 }
+        .gradient-heading { @apply text-3xl }
     }
 </style>
