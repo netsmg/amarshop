@@ -169,12 +169,11 @@ import { Book,
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
-    border: 2px solid var(--primary-600);
     backdrop-filter: var(--backdrop-blur);
     margin: 2rem 0;
 }
 
-.cta-button:hover {
+.cta-buttons:hover {
     background: var(--primary-600);
     transform: translateY(-2px) scale(1.02);
     box-shadow: var(--glass-shadow);
@@ -262,7 +261,7 @@ import { Book,
 }
 
 @media (max-width: 480px) {
-    .cta-button {
+    .cta-buttons {
         width: 100%;
         justify-content: center;
         padding: 1rem 2rem;
