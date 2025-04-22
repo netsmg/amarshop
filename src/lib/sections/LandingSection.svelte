@@ -64,7 +64,7 @@ import { Book,
 <style>
 :global(:root) {
     --hero-gradient: linear-gradient(145deg, var(--primary-300) 0%, var(--accent-500) 100%);
-    --text-gradient: linear-gradient(45deg, var(--primary-500) 0%, var(--accent-500) 100%);
+    --text-gradient: linear-gradient(45deg, var(--text-500) 0%, var(--accent-500) 100%);
 }
 
 .hero {
