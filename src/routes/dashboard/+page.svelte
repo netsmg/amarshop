@@ -1,4 +1,10 @@
 <script>
+        import { onMount } from 'svelte';
+        import { redirectIfNotLoggedIn } from '$lib/utils/redirectIfNotLoggedIn';
+
+onMount(() => {
+  redirectIfNotLoggedIn();
+});
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import McqForm from '$lib/sections/DashboardSection.svelte';
 </script>
