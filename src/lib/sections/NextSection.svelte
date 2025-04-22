@@ -193,7 +193,7 @@ link: "/quizzes/world-capitals"
     }
 
     .gradient-text {
-        background: linear-gradient(45deg, var(--secondary-100), var(--accent-500));
+        background: linear-gradient(45deg, var(--primary-100), var(--accent-500));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
