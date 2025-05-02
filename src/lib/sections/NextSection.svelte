@@ -373,7 +373,7 @@ link: "/quizzes/world-capitals"
     color: var(--text-600);
     font-size: 0.9rem;
   }
-<style>
+
   /* Base Responsive Settings */
   .hero {
     padding: 2rem 1rem;
@@ -569,5 +569,5 @@ link: "/quizzes/world-capitals"
     }
   }
 </style>
-</style>
+
 
