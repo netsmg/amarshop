@@ -144,17 +144,10 @@ link: "/quizzes/world-capitals"
 
 <style>
 
-    /* Base Styles */
-    :global(:root) {
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-    --hero-gradient: linear-gradient(145deg, var(--primary-300) 0%, var(--accent-500) 100%);
-    --text-gradient: linear-gradient(45deg, var(--primary-500) 0%, var(--accent-500) 100%);
-}
-
+    
 .hero {
     padding: 4rem 1rem;
-    background: var(--hero-gradient);
+    background: var(--glass-background-light);
     position: relative;
     overflow: hidden;
 }
@@ -163,7 +156,7 @@ link: "/quizzes/world-capitals"
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--glass-background);
+    background: var(--glass-background-light);
     backdrop-filter: var(--backdrop-blur);
 }
 
@@ -244,7 +237,7 @@ link: "/quizzes/world-capitals"
 
     .quiz-card {
         min-width: 320px;
-        background: var(--glass-bg);
+        background: var(--glass-background-light);
         border-radius: 1.5rem;
         overflow: hidden;
         scroll-snap-align: start;
@@ -302,7 +295,7 @@ link: "/quizzes/world-capitals"
     }
 
     .feature-card {
-        background: var(--glass-bg);
+        background: var(--glass-background);
         padding: 2.5rem;
         border-radius: 1.5rem;
         text-align: center;
@@ -337,7 +330,7 @@ link: "/quizzes/world-capitals"
     }
 
     .testimonial-card {
-        background: var(--glass-bg);
+        background: var(--glass-background);
         padding: 2rem;
         border-radius: 1.5rem;
         text-align: center;
