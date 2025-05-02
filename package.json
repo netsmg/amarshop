@@ -50,9 +50,7 @@
 	},
 	"dependencies": {
 		"@fontsource-variable/sora": "^5.2.5",
-		"canvas-confetti": "^1.9.3",
-		"firebase": "^11.6.0",
-		"html2canvas": "^1.4.1"
+		"firebase": "^11.6.0"
 	},
 	"packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
