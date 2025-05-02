@@ -247,7 +247,7 @@ link: "/quizzes/world-capitals"
 
     .quiz-thumbnail {
         height: 180px;
-        background: linear-gradient(45deg, var(--primary-500), var(--accent-500));
+        background: linear-gradient(45deg, var(--text-500), var(--primary-500));
         position: relative;
         padding: 1rem;
     }
@@ -304,7 +304,7 @@ link: "/quizzes/world-capitals"
     }
 
     .feature-card:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--background-300);
         transform: translateY(-5px);
     }
 
@@ -330,7 +330,7 @@ link: "/quizzes/world-capitals"
     }
 
     .testimonial-card {
-        background: var(--glass-background);
+        background: var(--background-300);
         padding: 2rem;
         border-radius: 1.5rem;
         text-align: center;
