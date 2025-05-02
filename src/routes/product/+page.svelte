@@ -1,6 +1,6 @@
 
 <script>
-  //import ProductCard from '$lib/components/product/ProductsCard.svelte';
+  import ProductCard from '$lib/components/product/ProductsCard.svelte';
   import { page } from '$app/stores';
   
 
@@ -100,7 +100,7 @@
     <div class="products-grid">
       {#each filteredProducts as product (product.id)}
         <div>
-          <p>Products are coming...</p>
+          <ProductCard {product} />
         </div>
       {/each}
     </div>
