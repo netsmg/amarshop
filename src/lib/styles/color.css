@@ -12,7 +12,7 @@
 
 
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     /* Inverted colors with transparency */
     --text-50: hsla(340, 46%, 5%, 0.9);
