@@ -373,5 +373,201 @@ link: "/quizzes/world-capitals"
     color: var(--text-600);
     font-size: 0.9rem;
   }
+<style>
+  /* Base Responsive Settings */
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero-content {
+    max-width: 1400px;
+    padding: 0 1.5rem;
+  }
+
+  /* Responsive Typography */
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: 3.5rem;
+    }
+    .section-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  /* Stats Grid Responsiveness */
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  /* Trending Quizzes Carousel */
+  .carousel-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .carousel-container {
+      overflow-x: visible;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+
+  /* Features Grid Adjustments */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Testimonials Grid */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Mobile-First Card Adjustments */
+  .quiz-card,
+  .feature-card,
+  .testimonial-card {
+    padding: 1.25rem;
+  }
+
+  .quiz-thumbnail {
+    height: 120px;
+  }
+
+  .quiz-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quiz-stats {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 480px) {
+    .quiz-card,
+    .feature-card,
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+    
+    .quiz-thumbnail {
+      height: 150px;
+    }
+
+    .quiz-meta {
+      flex-direction: row;
+    }
+
+    .quiz-stats {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  /* Touch Target Optimization */
+  .quiz-start,
+  .search-button,
+  .cta-button {
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Mobile Menu Hide/Show */
+  @media (max-width: 767px) {
+    .stats-grid {
+      margin: 1rem 0;
+    }
+    
+    .quiz-highlight {
+      margin: 1rem 0;
+      padding: 1.5rem;
+    }
+  }
+
+  /* Performance Optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* Landscape Orientation Adjustments */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+      padding: 1.5rem 0.5rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* High Contrast Mode Support */
+  @media (forced-colors: active) {
+    .glass-effect {
+      background: Canvas !important;
+      border-color: ButtonText !important;
+    }
+    
+    .gradient-text {
+      color: LinkText !important;
+      background: none !important;
+    }
+  }
+</style>
 </style>
 
