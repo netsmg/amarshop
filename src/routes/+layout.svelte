@@ -31,4 +31,7 @@
 	main {
 		/* min-height: 100dvh; */
 	}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 </style>
