@@ -1,63 +1,40 @@
 :root {
-  /* Glass effect variables */
-  --glass-background-light: rgba(255, 255, 255, 0.15);
-  --glass-background-dark: rgba(0, 0, 0, 0.15);
-  --glass-border-light: rgba(255, 255, 255, 0.2);
-  --glass-border-dark: rgba(0, 0, 0, 0.2);
-  --backdrop-blur: blur(12px);
-  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  --border-radius: 12px;
+  --glass-background-light: rgba(255, 255, 255, 0.1);
+  --glass-background-dark: rgba(0, 0, 0, 0.2);
+  --glass-border-light: rgba(255, 255, 255, 0.25);
+  --glass-border-dark: rgba(0, 0, 0, 0.25);
+  --backdrop-blur: blur(14px);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --border-radius: 1rem;
   --transition: all 0.3s ease-in-out;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    /* Text colors with subtle transparency */
-    --text-50: hsla(340, 46%, 95%, 0.9);
-    --text-100: hsla(342, 45%, 90%, 0.9);
-    --text-200: hsla(342, 45%, 80%, 0.85);
-    --text-300: hsla(341, 46%, 70%, 0.8);
-    --text-400: hsla(341, 46%, 60%, 0.75);
-    --text-500: hsla(341, 46%, 50%, 0.9);
-    --text-600: hsla(341, 46%, 40%, 0.95);
-    --text-700: hsla(341, 46%, 30%, 0.97);
-    --text-800: hsla(342, 45%, 20%, 0.98);
-    --text-900: hsla(342, 45%, 10%, 0.99);
-    --text-950: hsla(340, 46%, 5%, 0.99);
+    --text-50: #f9fafb;
+    --text-100: #f3f4f6;
+    --text-200: #e5e7eb;
+    --text-300: #d1d5db;
+    --text-400: #9ca3af;
+    --text-500: #6b7280;
+    --text-600: #4b5563;
+    --text-700: #374151;
+    --text-800: #1f2937;
+    --text-900: #111827;
 
-    /* Background colors with glass effect */
-    --background-50: hsla(340, 36%, 95%, 0.9);
-    --background-100: hsla(341, 37%, 90%, 0.85);
-    --background-200: hsla(339, 37%, 80%, 0.8);
-    --background-300: hsla(340, 37%, 70%, 0.75);
-    --background-400: hsla(340, 37%, 60%, 0.7);
-    --background-500: hsla(340, 37%, 50%, 0.65);
-    --background-600: hsla(340, 37%, 40%, 0.6);
-    --background-700: hsla(340, 37%, 30%, 0.55);
-    --background-800: hsla(339, 37%, 20%, 0.5);
-    --background-900: hsla(341, 37%, 10%, 0.45);
-    --background-950: hsla(340, 36%, 5%, 0.4);
+    --background-50: rgba(255, 255, 255, 0.95);
+    --background-100: rgba(250, 250, 250, 0.9);
+    --background-200: rgba(245, 245, 245, 0.85);
+    --background-300: rgba(230, 230, 230, 0.8);
+    --background-400: rgba(215, 215, 215, 0.75);
+    --background-500: rgba(200, 200, 200, 0.7);
 
-    /* Primary colors with depth */
-    --primary-50: hsla(79, 62%, 95%, 0.9);
-    --primary-100: hsla(77, 61%, 90%, 0.85);
-    --primary-200: hsla(78, 63%, 80%, 0.8);
-    --primary-300: hsla(78, 62%, 70%, 0.75);
-    --primary-400: hsla(78, 62%, 60%, 0.7);
-    --primary-500: hsla(78, 62%, 50%, 0.9);
-    --primary-600: hsla(78, 62%, 40%, 0.95);
-    --primary-700: hsla(78, 62%, 30%, 0.97);
-    --primary-800: hsla(78, 63%, 20%, 0.98);
-    --primary-900: hsla(77, 61%, 10%, 0.99);
-    --primary-950: hsla(79, 62%, 5%, 0.99);
+    --primary-500: hsla(220, 90%, 56%, 0.9); /* Soft Blue */
+    --secondary-500: hsla(280, 70%, 60%, 0.9); /* Soft Purple */
+    --accent-500: hsla(40, 90%, 60%, 0.9); /* Warm Yellow */
+    --success-500: hsla(150, 80%, 45%, 0.9); /* Teal Green */
+    --error-500: hsla(355, 80%, 60%, 0.9); /* Soft Red */
 
-    /* Accent colors with vibrancy */
-    --secondary-500: hsla(36, 47%, 50%, 0.9);
-    --accent-500: hsla(52, 46%, 50%, 0.9);
-    --success-500: hsla(158, 64%, 40%, 0.9);
-    --error-500: hsla(0, 84%, 60%, 0.9);
-
-    /* Glass effect overrides */
     --glass-background: var(--glass-background-light);
     --glass-border: var(--glass-border-light);
   }
@@ -65,33 +42,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Inverted colors with transparency */
-    --text-50: hsla(340, 46%, 5%, 0.9);
-    --text-100: hsla(342, 45%, 10%, 0.9);
-    --text-200: hsla(342, 45%, 20%, 0.85);
-    --text-300: hsla(341, 46%, 30%, 0.8);
-    --text-400: hsla(341, 46%, 40%, 0.75);
-    --text-500: hsla(341, 46%, 50%, 0.9);
-    --text-600: hsla(341, 46%, 60%, 0.95);
-    --text-700: hsla(341, 46%, 70%, 0.97);
-    --text-800: hsla(342, 45%, 80%, 0.98);
-    --text-900: hsla(342, 45%, 90%, 0.99);
-    --text-950: hsla(340, 46%, 95%, 0.99);
+    --text-50: #f3f4f6;
+    --text-100: #e5e7eb;
+    --text-200: #d1d5db;
+    --text-300: #9ca3af;
+    --text-400: #6b7280;
+    --text-500: #4b5563;
+    --text-600: #374151;
+    --text-700: #1f2937;
+    --text-800: #111827;
+    --text-900: #0f172a;
 
-    /* Dark background variations */
-    --background-50: hsla(342, 38%, 5%, 0.9);
-    --background-100: hsla(341, 37%, 10%, 0.85);
-    --background-200: hsla(339, 37%, 20%, 0.8);
-    --background-300: hsla(340, 39%, 30%, 0.75);
-    --background-400: hsla(340, 38%, 40%, 0.7);
-    --background-500: hsla(340, 38%, 50%, 0.65);
-    --background-600: hsla(340, 38%, 60%, 0.6);
-    --background-700: hsla(340, 39%, 70%, 0.55);
-    --background-800: hsla(339, 37%, 80%, 0.5);
-    --background-900: hsla(341, 37%, 90%, 0.45);
-    --background-950: hsla(336, 38%, 95%, 0.4);
+    --background-50: rgba(15, 23, 42, 0.95);
+    --background-100: rgba(30, 41, 59, 0.9);
+    --background-200: rgba(51, 65, 85, 0.85);
+    --background-300: rgba(71, 85, 105, 0.8);
+    --background-400: rgba(100, 116, 139, 0.75);
+    --background-500: rgba(148, 163, 184, 0.7);
 
-    /* Glass effect overrides */
+    --primary-500: hsla(220, 90%, 60%, 0.9);
+    --secondary-500: hsla(280, 65%, 70%, 0.9);
+    --accent-500: hsla(40, 90%, 70%, 0.9);
+    --success-500: hsla(150, 70%, 55%, 0.9);
+    --error-500: hsla(355, 75%, 65%, 0.9);
+
     --glass-background: var(--glass-background-dark);
     --glass-border: var(--glass-border-dark);
   }
