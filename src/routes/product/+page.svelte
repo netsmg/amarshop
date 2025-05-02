@@ -1,6 +1,6 @@
 
 <script>
-  import ProductCard from '$lib/components/product/ProductsCard.svelte';
+  //import ProductCard from '$lib/components/product/ProductsCard.svelte';
   import { page } from '$app/stores';
   
 
@@ -100,7 +100,7 @@
     <div class="products-grid">
       {#each filteredProducts as product (product.id)}
         <div>
-          <ProductCard {product} />
+         
         </div>
       {/each}
     </div>
@@ -108,6 +108,16 @@
 </div>
 
 <style>
+:root {
+  --card-bg: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4d4d4d;
+  --accent: #0066ff;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+
   .products-page {
     padding: 2rem 1rem;
     max-width: 1440px;
