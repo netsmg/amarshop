@@ -1,6 +1,6 @@
 
 <script>
-  import ProductCard from '$lib/components/ProductCard.svelte';
+  import ProductCard from '$lib/components/ProductsCard.svelte';
   import { page } from '$app/stores';
   
 
