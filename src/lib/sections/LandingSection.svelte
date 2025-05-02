@@ -218,5 +218,172 @@ import { Book,
     color: var(--text-600);
     line-height: 1.6;
   }
-</style>
 
+  /* Base Mobile Styles */
+  .hero {
+    padding: 2rem 1rem;
+    min-height: 90vh;
+  }
+
+  .hero-content {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .header-group {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-container {
+    margin: 1rem auto;
+    padding: 0.5rem;
+    width: 95%;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .quiz-highlight {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .quiz-badge {
+    left: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .feature-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /* Tablet Styles (768px+) */
+  @media (min-width: 768px) {
+    .hero {
+      padding: 3rem 2rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .search-container {
+      width: 80%;
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .cta-button {
+      padding: 1rem 2rem;
+    }
+
+    .quiz-highlight {
+      padding: 2rem;
+    }
+  }
+
+  /* Desktop Styles (1024px+) */
+  @media (min-width: 1024px) {
+    .hero {
+      padding: 4rem 3rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .search-container {
+      max-width: 600px;
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .quiz-highlight {
+      margin: 2.5rem 0;
+    }
+  }
+
+  /* Large Desktop (1280px+) */
+  @media (min-width: 1280px) {
+    .hero-content {
+      gap: 4rem;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+    }
+  }
+
+  /* Mobile Landscape Optimization */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+      min-height: 120vh;
+      padding: 1.5rem;
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Touch Target Optimization */
+  @media (pointer: coarse) {
+    .cta-button,
+    .search-button {
+      min-width: 48px;
+      min-height: 48px;
+    }
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .feature-card,
+    .quiz-card,
+    .cta-button {
+      transition: none;
+      transform: none !important;
+    }
+  }
+</style>
