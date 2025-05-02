@@ -5,6 +5,8 @@ module.exports = {
 	plugins: [
 		mixins({
 			mixinsFiles: ['./src/lib/styles/mixins.css']
-		})
+		}),
+		require('tailwindcss'),
+		require('autoprefixer')
 	]
 };
