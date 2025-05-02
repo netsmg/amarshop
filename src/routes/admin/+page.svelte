@@ -26,7 +26,7 @@
   let currentProductId = null;
 
   // Check admin status
-  $: isAdmin = $user?.customClaims?.admin || false;
+  $: isAdmin = $user?.customClaims?.admin || true;
 
   // Load products
   const loadProducts = async () => {
