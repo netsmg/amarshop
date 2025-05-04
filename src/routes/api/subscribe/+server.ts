@@ -1,7 +1,6 @@
 // src/routes/api/subscribe/+server.ts
 import { db } from '$lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -24,7 +23,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			createdAt: serverTimestamp()
 		});
 
-		return new Response(JSON.stringify({ message: 'Subscribed successfully' }), {
+		return new Response(JSON.stringify({ message: 'Subscribed' }), {
 			status: 200,
 			headers: {
 				'Access-Control-Allow-Origin': '*',
