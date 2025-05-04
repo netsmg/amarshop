@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="hero-image" in:fly={{ x: 50, duration: 800, delay: 500 }}>
-            <img src="/images/hero-illustration.png" alt="Learning Illustration" />
+            <img src="/images/horo-illustration.png" alt="Learning Illustration" />
         </div>
     </div>
 
@@ -51,7 +51,7 @@
                     transition:fly={{ y: 30, duration: 600, delay: i * 100 }} 
                     use:revealAnimation={'left'}
                 >
-                    <feature.icon class="feature-icon" />
+                  <center>  <feature.icon class="feature-icon" /> </center>
                     <h3 class="feature-title">{feature.title}</h3>
                     <p class="feature-description">{feature.description}</p>
                 </div>
@@ -86,22 +86,8 @@
         <button class="cta-button primary">Sign Up Free</button>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <h3>Mcq Store</h3>
-                <p>Empowering education through technology.</p>
-            </div>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/features">Features</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy">Privacy Policy</a>
-            </div>
-        </div>
-        
-    </footer>
+    
+    
 </section>
 
 <style>
@@ -304,50 +290,8 @@
         margin-bottom: 2rem;
     }
 
-    /* Footer */
-    .footer {
-        padding: 3rem 1rem;
-        background: var(--text-primary);
-        color: white;
-        text-align: center;
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 0 auto 2rem;
-    }
-
-    .footer-logo h3 {
-        font-size: 1.75rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .footer-logo p {
-        color: #d1d5db;
-    }
-
-    .footer-links {
-        display: flex;
-        gap: 1.5rem;
-    }
-
-    .footer-links a {
-        color: #d1d5db;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-        color: white;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid #374151;
-        padding-top: 1rem;
-    }
+    
+    
 
     /* Responsive Design */
     @media (max-width: 1024px) {
