@@ -1,5 +1,5 @@
 // src/routes/api/subscribe/+server.ts
-import { db } from '$lib/firebase'; // use named export for clarity
+import { db } from '$lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
@@ -7,25 +7,38 @@ import type { RequestHandler } from './$types';
 export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const formData = await request.formData();
-		const rawEmail = formData.get('email');
+		const email = formData.get('email');
 
-		if (typeof rawEmail !== 'string' || !rawEmail.includes('@')) {
-			return json({ error: 'Invalid email address.' }, { status: 400 });
+		if (typeof email !== 'string' || !email.includes('@')) {
+			return new Response(JSON.stringify({ error: 'Invalid email' }), {
+				status: 400,
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'application/json'
+				}
+			});
 		}
 
 		await addDoc(collection(db, 'subscribers'), {
-			email: rawEmail.trim(),
+			email: email.trim(),
 			createdAt: serverTimestamp()
 		});
 
-		return json({ message: 'Subscription successful.' }, {
+		return new Response(JSON.stringify({ message: 'Subscribed successfully' }), {
 			status: 200,
 			headers: {
-				'Access-Control-Allow-Origin': '*', // Optional CORS support
+				'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/json'
 			}
 		});
-	} catch (error) {
-		console.error('Firebase error:', error);
-		return json({ error: 'Failed to save email.' }, { status: 500 });
+	} catch (err) {
+		console.error(err);
+		return new Response(JSON.stringify({ error: 'Server error' }), {
+			status: 500,
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/json'
+			}
+		});
 	}
 };
