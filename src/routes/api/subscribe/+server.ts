@@ -3,6 +3,17 @@ import { db } from '$lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import type { RequestHandler } from './$types';
 
+export const OPTIONS: RequestHandler = async () => {
+	return new Response(null, {
+		status: 204,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'POST, OPTIONS',
+			'Access-Control-Allow-Headers': 'Content-Type, Accept'
+		}
+	});
+};
+
 export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const formData = await request.formData();
@@ -23,7 +34,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			createdAt: serverTimestamp()
 		});
 
-		return new Response(JSON.stringify({ message: 'Subscribed' }), {
+		return new Response(JSON.stringify({ message: 'Subscribed successfully' }), {
 			status: 200,
 			headers: {
 				'Access-Control-Allow-Origin': '*',
