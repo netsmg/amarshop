@@ -20,7 +20,7 @@ import { Book,
                 <button class="search-button"><Search /></button>
             </div>
             
-            <a href="/exams" class="cta-button" use:borderAnimation>
+            <a href="/exams" class="cta-button font-bold py-2 px-4 rounded" use:borderAnimation>
                 Start Quiz Now
                 <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -38,13 +38,13 @@ import { Book,
 
         <div class="features-grid">
             
-            <div class="feature-card" use:revealAnimation>
+            <div class="feature-card w-full" use:revealAnimation>
                 <div class="feature-icon"> <Book /> </div>
                 <h4>Wide Range of Topics</h4>
                 <p>Explore 50+ subjects from science to literature</p>
             </div>
             
-            <div class="feature-card" use:revealAnimation>
+            <div class="feature-card w-full" use:revealAnimation>
                 <div class="feature-icon"> <AutoFlash /> </div>
                 <h4>Instant Feedback</h4>
                 <p>Detailed explanations with every answer</p>
@@ -52,7 +52,7 @@ import { Book,
             
            
             
-            <div class="feature-card" use:revealAnimation>
+            <div class="feature-card w-full" use:revealAnimation>
                 <div class="feature-icon"> <Clock /></div>
                 <h4>Free & Unlimited</h4>
                 <p>Complete access with zero restrictions</p>
