@@ -170,8 +170,10 @@
     }
 
     .hero-image img {
-        max-width: 500px;
+        max-width: 1200px;
         height: auto;
+        border-radius: 13px;
+        
     }
 
     /* Features Section */
