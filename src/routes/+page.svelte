@@ -31,10 +31,12 @@
             <p class="hero-text" in:fly={{ y: 20, duration: 600, delay: 300 }}>
                 Discover a world of knowledge with Mcq Store's extensive question bank and smart learning tools.
             </p>
+<center>
             <div class="hero-cta" in:fly={{ y: 20, duration: 600, delay: 400 }}>
                 <button class="cta-button primary">Get Started Now</button>
                 <button class="cta-button secondary">Explore Features</button>
             </div>
+</center>
         </div>
         <div class="hero-image" in:fly={{ x: 50, duration: 800, delay: 500 }}>
             <img src="/images/horo-illustration.png" alt="Learning Illustration" />
@@ -83,7 +85,7 @@
     <section class="cta-section" in:fade={{ duration: 800 }} use:revealAnimation>
         <h2 class="cta-title">Ready to Start Learning?</h2>
         <p class="cta-text">Join thousands of learners worldwide and take control of your education today.</p>
-        <button class="cta-button primary">Sign Up Free</button>
+        <a href="/auth" class="cta-button primary">Sign Up Free</a>
     </section>
 
     
@@ -170,7 +172,7 @@
     }
 
     .hero-image img {
-        max-width: 1200px;
+        max-width: 720px;
         height: auto;
         border-radius: 13px;
         
